@@ -5,7 +5,7 @@
 
 A simple and customizable react-native dropdown created using react-native-modal and react-native-paper.
 
-- Checkout the [example/] folder for source code and example.
+- Checkout the [example/](example) folder for source code and example.
 
 ## Features
 
@@ -15,6 +15,10 @@ A simple and customizable react-native dropdown created using react-native-modal
 - Easy to integrate with [formik](https://formik.org/docs/guides/react-native) and [redux-form](https://redux-form.com/7.2.0/docs/faq/reactnative.md/)
 - Implemented using [react-native-modal](https://github.com/react-native-modal/react-native-modal)
 - Fully typed with [TypeScript](https://typescriptlang.org)
+
+## Demo
+
+<a href="#"><img src="https://github.com/srk-sharingan/sharingan-rn-modal-dropdown/blob/master/demo/demo.gif" width="360"></a>
 
 ## Installation
 
