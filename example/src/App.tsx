@@ -2,7 +2,6 @@ import * as React from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 
 import { Colors, Appbar, Provider } from 'react-native-paper';
-// import Example from './Example';
 import FormikExample from './FormikExample';
 
 const App = () => {
