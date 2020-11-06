@@ -1,6 +1,6 @@
 {
   "name": "sharingan-rn-modal-dropdown",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple and customizable react-native dropdown created using react-native-modal and react-native-paper.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
