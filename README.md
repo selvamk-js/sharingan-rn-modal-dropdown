@@ -1,7 +1,8 @@
 # sharingan-rn-modal-dropdown
 
-<!-- [![Build Status][build-badge]][build]
-[![Version][version-badge]][package] -->
+[![Build Status][build-badge]][build]
+[![Version][version-badge]][package]
+[![MIT License][license-badge]][license]
 
 A simple and customizable react-native dropdown created using react-native-modal and react-native-paper.
 
@@ -523,4 +524,13 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 [MIT](LICENSE)
 
+[license]: https://opensource.org/licenses/MIT
+
+<!-- badges -->
+
+[build-badge]: https://img.shields.io/circleci/build/github/srk-sharingan/sharingan-rn-modal-dropdown/master.svg?style=flat-square
+[build]: https://app.circleci.com/pipelines/github/srk-sharingan/sharingan-rn-modal-dropdown
+[package]: https://www.npmjs.com/package/sharingan-rn-modal-dropdown
+[version-badge]: https://img.shields.io/npm/v/sharingan-rn-modal-dropdown.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/sharingan-rn-modal-dropdown.svg?style=flat-square
 [license]: https://opensource.org/licenses/MIT
