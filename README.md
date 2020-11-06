@@ -19,7 +19,7 @@ A simple and customizable react-native dropdown created using react-native-modal
 
 ## Demo
 
-<a href="#"><img src="https://github.com/srk-sharingan/sharingan-rn-modal-dropdown/blob/master/demo/demo.gif" width="360"></a>
+<img src="https://github.com/srk-sharingan/sharingan-rn-modal-dropdown/blob/master/demo/demo.gif" width="360">
 
 ## Installation
 
