@@ -1,7 +1,7 @@
 {
   "name": "sharingan-rn-modal-dropdown",
-  "version": "0.1.0",
-  "description": "A simple and customizable react-native dropdown created using react native modal.",
+  "version": "1.0.0",
+  "description": "A simple and customizable react-native dropdown created using react-native-modal and react-native-paper.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -32,7 +32,12 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native-dropdown",
+    "dropdown",
+    "material-dropdown",
+    "react-native-group-dropdown",
+    "group-dropdown"
   ],
   "repository": "https://github.com/srk-sharingan/sharingan-rn-modal-dropdown",
   "author": "Selvam Kumar <itsselvamkumar@gmail.com> (https://github.com/srk-sharingan)",
@@ -41,14 +46,21 @@
     "url": "https://github.com/srk-sharingan/sharingan-rn-modal-dropdown/issues"
   },
   "homepage": "https://github.com/srk-sharingan/sharingan-rn-modal-dropdown#readme",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "react-native-modal": "^11.5.6"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.19",
-    "@types/react-native": "0.62.13",
+    "@types/lodash": "^4.14.162",
+    "@types/react": "^16.9.53",
+    "@types/react-native": "^0.63.30",
+    "@types/react-native-vector-icons": "^6.4.6",
+    "@typescript-eslint/parser": "^4.5.0",
     "commitlint": "^8.3.5",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -57,14 +69,20 @@
     "jest": "^26.0.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
+    "react": "16.13.1",
+    "react-native": "0.63.3",
+    "react-native-modal": "^11.5.6",
+    "react-native-paper": "^4.2.0",
+    "react-native-vector-icons": "^7.1.0",
     "release-it": "^13.5.8",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-modal": "*",
+    "react-native-paper": "*",
+    "react-native-vector-icons": "*"
   },
   "jest": {
     "preset": "react-native",
@@ -107,29 +125,32 @@
       "prettier"
     ],
     "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
+      "react-native/no-inline-styles": 0,
+      "space-in-brackets": 0,
+      "array-bracket-spacing": 0
     }
   },
-  "eslintIgnore": ["node_modules/", "lib/"],
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "semi": true,
+    "arrowParens": "avoid",
+    "bracketSpacing": true
   },
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
   }
 }

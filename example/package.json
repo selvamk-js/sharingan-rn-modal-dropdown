@@ -9,12 +9,18 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.2"
+    "formik": "^2.2.1",
+    "react": "16.13.1",
+    "react-native": "0.63.3",
+    "react-native-modal": "^11.5.6",
+    "react-native-paper": "^4.2.0",
+    "react-native-vector-icons": "^7.1.0",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/runtime": "^7.9.6",
+    "@types/yup": "^0.29.9",
     "babel-plugin-module-resolver": "^4.0.0",
     "metro-react-native-babel-preset": "^0.59.0"
   }
