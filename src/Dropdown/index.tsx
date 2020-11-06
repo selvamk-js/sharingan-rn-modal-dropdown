@@ -118,7 +118,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
   useEffect(() => {
     if (!Lo.isEmpty(data) && value) {
       const lFilter = Lo.filter(data, { value: value })[0];
-      setLabelV(lFilter.label);
+      if (!Lo.isEmpty(lFilter)) setLabelV(lFilter.label);
     }
   }, [value, data]);
 
@@ -213,7 +213,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
 
   const handleOptionSelect = (v: string) => {
     const lFilter = Lo.filter(data, { value: v })[0];
-    setLabelV(lFilter.label);
+    if (!Lo.isEmpty(lFilter)) setLabelV(lFilter.label);
     if (onChange && typeof onChange === 'function') {
       onChange(v.toString());
       setIsVisible(false);
