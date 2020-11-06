@@ -137,7 +137,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
   useEffect(() => {
     if (!Lo.isEmpty(singluarData) && value) {
       const lFilter = Lo.filter(singluarData, { value: value })[0];
-      setlabelV(lFilter.label);
+      if (!Lo.isEmpty(lFilter)) setlabelV(lFilter.label);
       setSelected(value);
     }
   }, [value, singluarData]);
@@ -239,7 +239,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
 
   const handleOptionSelect = (v: string) => {
     const lFilter = Lo.filter(singluarData, { value: v })[0];
-    setlabelV(lFilter.label);
+    if (!Lo.isEmpty(lFilter)) setlabelV(lFilter.label);
     setSelected(v.toString());
     setIsVisible(false);
     if (hasError) {
