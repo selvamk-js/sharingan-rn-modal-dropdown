@@ -12,12 +12,12 @@ export interface IDefaultValue {
   /**
    * Set the dropdown default value, can be used in redux-form or formik
    */
-  value: string;
+  value: string | number;
 
   /**
    * Call back function onSelecting the dropdown value. It will return the selected item value.
    */
-  onChange: (value: string) => void;
+  onChange: (value: string | number) => void;
 }
 
 export interface IDropdownDefault {
@@ -169,7 +169,7 @@ export interface IDropdownDefault {
 
 export interface IDropdownData {
   label: string;
-  value: string;
+  value: string | number;
   avatarSource?: ImageSourcePropType;
 }
 
@@ -261,14 +261,14 @@ export interface IDropdownProps extends IDropdownDefault, IDefaultValue {
 
 export interface IMultiselectDropdownProps extends IDropdownDefault {
   /**
-   * Set the dropdown default value(array of string), can be used in redux-form or formik
+   * Set the dropdown default value(array of string or number). Aslo, can be used in redux-form or formik
    */
-  value: string[];
+  value: Array<string | number>;
 
   /**
    * Call back function onSelecting the dropdown value. It will return the selected item value.
    */
-  onChange: (value: string[]) => void;
+  onChange: (value: Array<string | number>) => void;
 
   /**
    * Collection of object items to render the dropdown.
@@ -278,15 +278,11 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
    * {
    * value: '1',
    * label: 'Tiger Nixon',
-   * employee_salary: '320800',
-   * employee_age: '61',
    * avatarSource: require('./ddicon.png'),
    * },
    * {
    * value: '2',
    * label: 'Garrett Winters',
-   * employee_salary: '170750',
-   * employee_age: '63',
    * avatarSource: {
    *   uri: 'https://img.icons8.com/color/344/circled-user-female-skin-type-6.png',
    *  },
@@ -329,8 +325,8 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
 
 export interface IDropdownItemProps {
   item: IDropdownData;
-  selected: string;
-  onSelect: (value: string) => void;
+  selected: string | number;
+  onSelect: (value: string | number) => void;
   selectedColor?: string;
   disabled?: boolean;
   itemTextStyle?: StyleProp<TextStyle>;
@@ -342,8 +338,8 @@ export interface IDropdownItemProps {
 
 export interface IMultiselectDropdownItemProps {
   item: IDropdownData;
-  selected: string[];
-  onSelect: (value: string) => void;
+  selected: Array<string | number>;
+  onSelect: (value: string | number) => void;
   selectedColor?: string;
   disabled?: boolean;
   itemTextStyle?: StyleProp<TextStyle>;

@@ -1,13 +1,230 @@
+// export const data = [
+//   {
+//     value: '1',
+//     label: 'Tiger Nixon',
+//     employee_salary: '320800',
+//     employee_age: '61',
+//     avatarSource: require('./ddicon.png'),
+//   },
+//   {
+//     value: '2',
+//     label: 'Garrett Winters',
+//     employee_salary: '170750',
+//     employee_age: '63',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '3',
+//     label: 'Ashton Cox',
+//     employee_salary: '86000',
+//     employee_age: '66',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '4',
+//     label: 'Cedric Kelly',
+//     employee_salary: '433060',
+//     employee_age: '22',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '5',
+//     label: 'Airi Satou',
+//     employee_salary: '162700',
+//     employee_age: '33',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '6',
+//     label: 'Brielle Williamson',
+//     employee_salary: '372000',
+//     employee_age: '61',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '7',
+//     label: 'Herrod Chandler',
+//     employee_salary: '137500',
+//     employee_age: '59',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '8',
+//     label: 'Rhona Davvalueson',
+//     employee_salary: '327900',
+//     employee_age: '55',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '9',
+//     label: 'Colleen Hurst',
+//     employee_salary: '205500',
+//     employee_age: '39',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '10',
+//     label: 'Sonya Frost',
+//     employee_salary: '103600',
+//     employee_age: '23',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '11',
+//     label: 'Jena Gaines',
+//     employee_salary: '90560',
+//     employee_age: '30',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '12',
+//     label: 'Quinn Flynn',
+//     employee_salary: '342000',
+//     employee_age: '22',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '13',
+//     label: 'Charde Marshall',
+//     employee_salary: '470600',
+//     employee_age: '36',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '14',
+//     label: 'Haley Kennedy',
+//     employee_salary: '313500',
+//     employee_age: '43',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '15',
+//     label: 'Tatyana Fitzpatrick',
+//     employee_salary: '385750',
+//     employee_age: '19',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '16',
+//     label: 'Michael Silva',
+//     employee_salary: '198500',
+//     employee_age: '66',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '17',
+//     label: 'Paul Byrd',
+//     employee_salary: '725000',
+//     employee_age: '64',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '18',
+//     label: 'Gloria Little',
+//     employee_salary: '237500',
+//     employee_age: '59',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '19',
+//     label: 'Bradley Greer',
+//     employee_salary: '132000',
+//     employee_age: '41',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '20',
+//     label: 'Dai Rios',
+//     employee_salary: '217500',
+//     employee_age: '35',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '21',
+//     label: 'Jenette Caldwell',
+//     employee_salary: '345000',
+//     employee_age: '30',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '22',
+//     label: 'Yuri Berry',
+//     employee_salary: '675000',
+//     employee_age: '40',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '23',
+//     label: 'Caesar Vance',
+//     employee_salary: '106450',
+//     employee_age: '21',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+//   {
+//     value: '24',
+//     label: 'Doris Wilder',
+//     employee_salary: '85600',
+//     employee_age: '23',
+//     avatarSource: {
+//       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+//     },
+//   },
+// ];
+
 export const data = [
   {
-    value: '1',
+    value: 1,
     label: 'Tiger Nixon',
     employee_salary: '320800',
     employee_age: '61',
     avatarSource: require('./ddicon.png'),
   },
   {
-    value: '2',
+    value: 2,
     label: 'Garrett Winters',
     employee_salary: '170750',
     employee_age: '63',
@@ -16,7 +233,7 @@ export const data = [
     },
   },
   {
-    value: '3',
+    value: 3,
     label: 'Ashton Cox',
     employee_salary: '86000',
     employee_age: '66',
@@ -25,7 +242,7 @@ export const data = [
     },
   },
   {
-    value: '4',
+    value: 4,
     label: 'Cedric Kelly',
     employee_salary: '433060',
     employee_age: '22',
@@ -34,7 +251,7 @@ export const data = [
     },
   },
   {
-    value: '5',
+    value: 5,
     label: 'Airi Satou',
     employee_salary: '162700',
     employee_age: '33',
@@ -43,7 +260,7 @@ export const data = [
     },
   },
   {
-    value: '6',
+    value: 6,
     label: 'Brielle Williamson',
     employee_salary: '372000',
     employee_age: '61',
@@ -52,7 +269,7 @@ export const data = [
     },
   },
   {
-    value: '7',
+    value: 7,
     label: 'Herrod Chandler',
     employee_salary: '137500',
     employee_age: '59',
@@ -61,7 +278,7 @@ export const data = [
     },
   },
   {
-    value: '8',
+    value: 8,
     label: 'Rhona Davvalueson',
     employee_salary: '327900',
     employee_age: '55',
@@ -70,7 +287,7 @@ export const data = [
     },
   },
   {
-    value: '9',
+    value: 9,
     label: 'Colleen Hurst',
     employee_salary: '205500',
     employee_age: '39',
@@ -79,7 +296,7 @@ export const data = [
     },
   },
   {
-    value: '10',
+    value: 10,
     label: 'Sonya Frost',
     employee_salary: '103600',
     employee_age: '23',
@@ -88,7 +305,7 @@ export const data = [
     },
   },
   {
-    value: '11',
+    value: 11,
     label: 'Jena Gaines',
     employee_salary: '90560',
     employee_age: '30',
@@ -97,7 +314,7 @@ export const data = [
     },
   },
   {
-    value: '12',
+    value: 12,
     label: 'Quinn Flynn',
     employee_salary: '342000',
     employee_age: '22',
@@ -106,7 +323,7 @@ export const data = [
     },
   },
   {
-    value: '13',
+    value: 13,
     label: 'Charde Marshall',
     employee_salary: '470600',
     employee_age: '36',
@@ -115,7 +332,7 @@ export const data = [
     },
   },
   {
-    value: '14',
+    value: 14,
     label: 'Haley Kennedy',
     employee_salary: '313500',
     employee_age: '43',
@@ -124,7 +341,7 @@ export const data = [
     },
   },
   {
-    value: '15',
+    value: 15,
     label: 'Tatyana Fitzpatrick',
     employee_salary: '385750',
     employee_age: '19',
@@ -133,7 +350,7 @@ export const data = [
     },
   },
   {
-    value: '16',
+    value: 16,
     label: 'Michael Silva',
     employee_salary: '198500',
     employee_age: '66',
@@ -142,7 +359,7 @@ export const data = [
     },
   },
   {
-    value: '17',
+    value: 17,
     label: 'Paul Byrd',
     employee_salary: '725000',
     employee_age: '64',
@@ -151,7 +368,7 @@ export const data = [
     },
   },
   {
-    value: '18',
+    value: 18,
     label: 'Gloria Little',
     employee_salary: '237500',
     employee_age: '59',
@@ -160,7 +377,7 @@ export const data = [
     },
   },
   {
-    value: '19',
+    value: 19,
     label: 'Bradley Greer',
     employee_salary: '132000',
     employee_age: '41',
@@ -169,7 +386,7 @@ export const data = [
     },
   },
   {
-    value: '20',
+    value: 20,
     label: 'Dai Rios',
     employee_salary: '217500',
     employee_age: '35',
@@ -178,7 +395,7 @@ export const data = [
     },
   },
   {
-    value: '21',
+    value: 21,
     label: 'Jenette Caldwell',
     employee_salary: '345000',
     employee_age: '30',
@@ -187,7 +404,7 @@ export const data = [
     },
   },
   {
-    value: '22',
+    value: 22,
     label: 'Yuri Berry',
     employee_salary: '675000',
     employee_age: '40',
@@ -196,7 +413,7 @@ export const data = [
     },
   },
   {
-    value: '23',
+    value: 23,
     label: 'Caesar Vance',
     employee_salary: '106450',
     employee_age: '21',
@@ -205,7 +422,7 @@ export const data = [
     },
   },
   {
-    value: '24',
+    value: 24,
     label: 'Doris Wilder',
     employee_salary: '85600',
     employee_age: '23',
@@ -214,7 +431,6 @@ export const data = [
     },
   },
 ];
-
 export const groupData = [
   {
     title: 'Apple',

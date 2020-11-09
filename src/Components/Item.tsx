@@ -82,16 +82,14 @@ const Item: React.FC<IDropdownItemProps> = ({
           <Text
             style={[
               itemTextStyle,
-              selected === value.toString()
-                ? styles.selected
-                : styles.unselected,
+              selected === value ? styles.selected : styles.unselected,
             ]}
           >
             {label}
           </Text>
         </View>
         <View style={styles.iconView}>
-          {selected === value.toString() ? (
+          {selected === value ? (
             <MaterialCommunityIcons
               name="check"
               size={18}

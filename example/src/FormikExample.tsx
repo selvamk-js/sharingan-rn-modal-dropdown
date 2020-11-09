@@ -17,23 +17,32 @@ import {
 } from 'react-native-paper';
 import { DropdownValidation } from './validation';
 
+type tState = {
+  msChipFlat: Array<string | number>;
+  msChipOutlined: Array<string | number>;
+  sddWoAvatar: string | number;
+  sddWAvatar: string | number;
+  gddWoAvatar: string | number;
+  gddWAvatar: string | number;
+};
+
 const FormikExample = () => {
   const [visible, setVisible] = useState(false);
-  const [state, setState] = useState({
-    msChipFlat: ['1'],
-    msChipOutlined: ['1'],
-    sddWoAvatar: '1',
-    sddWAvatar: '1',
-    gddWoAvatar: '1',
-    gddWAvatar: '1',
+  const [state, setState] = useState<tState>({
+    msChipFlat: [],
+    msChipOutlined: [],
+    sddWoAvatar: '',
+    sddWAvatar: '',
+    gddWoAvatar: '',
+    gddWAvatar: '',
   });
   const hideDialog = () => setVisible(false);
 
   return (
     <Formik
       initialValues={{
-        msChipFlat: ['1'],
-        msChipOutlined: ['12', '20', '4'],
+        msChipFlat: [1],
+        msChipOutlined: [12, 2],
         sddWoAvatar: '',
         sddWAvatar: '',
         gddWoAvatar: '1',

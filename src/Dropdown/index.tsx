@@ -84,6 +84,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     paperTheme,
     textInputStyle,
   } = props;
+  const [selected, setSelected] = useState<string | number>();
   const [labelv, setLabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [iconColor, setIconColor] = useState<string | undefined>('grey');
@@ -141,8 +142,8 @@ const Dropdown: React.FC<IDropdownProps> = props => {
   }, [data, disableSort, defaultSortOrder]);
 
   useEffect(() => {
-    if (isVisible && value) {
-      const selectedIndex = Lo.findIndex(options, { value: value });
+    if (isVisible && selected) {
+      const selectedIndex = Lo.findIndex(options, { value: selected });
       if (selectedIndex >= 0 && listRef) {
         setTimeout(() => {
           listRef.current.scrollToIndex({
@@ -153,7 +154,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
         }, 100);
       }
     }
-  }, [value, options, isVisible]);
+  }, [selected, options, isVisible]);
 
   useEffect(() => {
     if (required && error) {
@@ -211,11 +212,12 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     if (onBlur && typeof onBlur === 'function') onBlur();
   };
 
-  const handleOptionSelect = (v: string) => {
+  const handleOptionSelect = (v: string | number) => {
     const lFilter = Lo.filter(data, { value: v })[0];
     if (!Lo.isEmpty(lFilter)) setLabelV(lFilter.label);
+    setSelected(v);
     if (onChange && typeof onChange === 'function') {
-      onChange(v.toString());
+      onChange(v);
       setIsVisible(false);
     }
     if (hasError) {
@@ -337,8 +339,8 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               <FlatList
                 ref={listRef}
                 data={options}
-                initialNumToRender={25}
-                maxToRenderPerBatch={25}
+                initialNumToRender={50}
+                // maxToRenderPerBatch={25}
                 persistentScrollbar
                 scrollEnabled={!showLoader}
                 ListHeaderComponent={
@@ -366,7 +368,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                   <Item
                     item={item}
                     onSelect={handleOptionSelect}
-                    selected={value.toString()}
+                    selected={value}
                     selectedColor={primaryColor}
                     itemTextStyle={itemTextStyle}
                     itemContainerStyle={itemContainerStyle}

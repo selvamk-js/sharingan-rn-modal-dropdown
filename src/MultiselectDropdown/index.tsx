@@ -221,7 +221,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     if (onBlur && typeof onBlur === 'function') onBlur();
   };
 
-  const handleOptionSelect = (v: string) => {
+  const handleOptionSelect = (v: string | number) => {
     if (onChange && typeof onChange === 'function') {
       if (value.includes(v)) {
         onChange(Lo.remove(value, s => s !== v));
@@ -260,7 +260,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     } else setOptions(data);
   };
 
-  const removeChip = (rmV: string) => {
+  const removeChip = (rmV: string | number) => {
     if (!showLoader) {
       if (onChange && typeof onChange === 'function') {
         onChange(Lo.remove(value, s => s !== rmV));
