@@ -148,8 +148,8 @@ export const groupData = [
 
 const Example = () => {
   const [valueMS, setValueMS] = useState<string[]>([]);
-  const [valueSS, setValueSS] = useState('');
-  const [valueGS, setValueGS] = useState('');
+  const [valueSS, setValueSS] = useState<string>('');
+  const [valueGS, setValueGS] = useState<string>('');
   const onChangeMS = (value: string[]) => {
     setValueMS(value);
   };

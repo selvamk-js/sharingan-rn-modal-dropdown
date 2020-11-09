@@ -19,7 +19,7 @@ A simple and customizable react-native dropdown created using react-native-modal
 
 ## Demo
 
-<img src="https://github.com/srk-sharingan/sharingan-rn-modal-dropdown/blob/master/demo/demo.gif" width="360">
+![Demo Screen](demo/demo.gif)
 
 ## Installation
 
@@ -239,123 +239,123 @@ const styles = StyleSheet.create({
 export default Example;
 ```
 
-## API reference
+### API reference
 
 ---
 
 The package exports a `Dropdown`, `GroupDropdown`, and `MultiselectDropdown,` components which is the one you'd use to render the dropdowns.
 
-#### Props (common)
+### Props (common)
 
 ---
 
-##### `label` (`required`)
+#### `label` (`required`)
 
 Set the dropdown field label.
 
-##### `required`
+#### `required`
 
 Set whether the dropdown is required or not and an asterisk symbol will be added with the label for indication. Also, it can be used with the error.
 
-##### `disabled`
+#### `disabled`
 
 Enable and Disable the dropdown
 
-##### `floating`
+#### `floating`
 
 Open the dropdown like the modal.
 
-##### `enableSearch`
+#### `enableSearch`
 
 Enable search field for the dropdown.
 
-##### `error`
+#### `error`
 
 Set whether the dropdown has an error or not. The error field will work only when the required field is enabled.
 
-##### `onBlur`
+#### `onBlur`
 
 Call back function onClosing the dropdown modal.
 
-##### `elevation`
+#### `elevation`
 
 Control the elevation for the dropdown container view.
 
-##### `borderRadius`
+#### `borderRadius`
 
 Control the border radius for the dropdown container view.
 
-##### `activityIndicatorColor`
+#### `activityIndicatorColor`
 
 Changes the loader indicator color.
 
-##### `searchPlaceholder`
+#### `searchPlaceholder`
 
 Search area filed placeholder text.
 
-##### `rippleColor`
+#### `rippleColor`
 
 Change the ripple color.
 
-##### `helperText`
+#### `helperText`
 
 Set the helper text for the dropdown, this will be visible only when the dropdown field turned into an error field.
 
-##### `errorColor`
+#### `errorColor`
 
 Set the dropdown error color.
 
-##### `showLoader`
+#### `showLoader`
 
 Show or hide loader for the dropdown container.
 
-##### `itemTextStyle`
+#### `itemTextStyle`
 
 Change the text view style for the dropdown item.
 
-##### `itemContainerStyle`
+#### `itemContainerStyle`
 
 Change the dropdown item container view style.
 
-##### `animationIn`
+#### `animationIn`
 
 Modal open animation type same as [react-native-modal](https://github.com/react-native-modal/react-native-modal).
 
-##### `animationInTiming`
+#### `animationInTiming`
 
 Modal open animation duration same as [react-native-modal](https://github.com/react-native-modal/react-native-modal).
 
-##### `animationOut`
+#### `animationOut`
 
 Modal close animation duration same as [react-native-modal](https://github.com/react-native-modal/react-native-modal).
 
-##### `supportedOrientations`
+#### `supportedOrientations`
 
 Modal supported orientations same as [react-native-modal](https://github.com/react-native-modal/react-native-modal).
 
-##### `parentDDContainerStyle`
+#### `parentDDContainerStyle`
 
 Dropdown parent container style.
 
-##### `emptyListText`
+#### `emptyListText`
 
 - String: Message to be shown when the dropdown is empty.
   or
 - React Node: to completely change the empty component.
 
-##### `enableAvatar`
+#### `enableAvatar`
 
 Enable or disable avatar for the dropdown items.
 
-##### `avatarSize`
+#### `avatarSize`
 
 Set the avatar view size.
 
-##### `paperTheme`
+#### `paperTheme`
 
-Since the dropdown build on top of Native Paper you can over write the theme by passing your own native paper theme, for more info refer https://callstack.github.io/react-native-paper/theming.html
+Since the dropdown build on top of Native Paper you can over write the theme by passing your own native paper theme, for more info refer <https://callstack.github.io/react-native-paper/theming.html>
 
-##### `textInputStyle`
+#### `textInputStyle`
 
 Dropdown input style.
 
@@ -365,7 +365,7 @@ Dropdown input style.
 
 #### `value` (`required`)
 
-Set the dropdown value, can be used in redux-form or formik.
+Set the dropdown value `(only string or number based on the data node value)`, can be used in redux-form or formik.
 
 #### `data` (`required`)
 
@@ -410,7 +410,7 @@ Set the sorting order for the dropdown items
 
 #### `value` (`required`)
 
-Set the dropdown value, can be used in redux-form or formik.
+Set the group dropdown value `(only string or number based on the data node value)`, can be used in redux-form or formik.
 
 #### `data` (`required`)
 
@@ -462,7 +462,7 @@ Dropdown group header text style.
 
 #### `value` (`required`)
 
-Set the dropdown default value(array of string), can be used in redux-form or formik
+Set the multiselect dropdown value(`only array of string[] or number[] based on the data node value`) . Aslo, can be used in redux-form or formik
 
 #### `data` (`required`)
 

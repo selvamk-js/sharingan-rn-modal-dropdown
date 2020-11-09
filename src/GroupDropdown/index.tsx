@@ -90,7 +90,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     paperTheme,
     textInputStyle,
   } = props;
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<string | number>();
   const [labelv, setlabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [iconColor, setIconColor] = useState<string | undefined>('grey');
@@ -237,20 +237,21 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     if (onBlur && typeof onBlur === 'function') onBlur();
   };
 
-  const handleOptionSelect = (v: string) => {
+  const handleOptionSelect = (v: string | number) => {
     const lFilter = Lo.filter(singluarData, { value: v })[0];
     if (!Lo.isEmpty(lFilter)) setlabelV(lFilter.label);
-    setSelected(v.toString());
-    setIsVisible(false);
+    setSelected(v);
+    if (onChange && typeof onChange === 'function') {
+      onChange(v);
+      setIsVisible(false);
+    }
     if (hasError) {
       setIconColor('red');
     } else {
       setIconColor('grey');
     }
     setSearchQuery('');
-    if (onChange && typeof onChange === 'function') {
-      onChange(v);
-    }
+
     setOptions(data);
   };
 
@@ -398,7 +399,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                     <Item
                       item={item}
                       onSelect={handleOptionSelect}
-                      selected={selected.toString()}
+                      selected={value}
                       selectedColor={primaryColor}
                       itemTextStyle={itemTextStyle}
                       itemContainerStyle={itemContainerStyle}

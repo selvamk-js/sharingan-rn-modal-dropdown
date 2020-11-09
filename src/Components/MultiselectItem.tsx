@@ -82,16 +82,14 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
           <Text
             style={[
               itemTextStyle,
-              selected.includes(value.toString())
-                ? styles.selected
-                : styles.unselected,
+              selected.includes(value) ? styles.selected : styles.unselected,
             ]}
           >
             {label}
           </Text>
         </View>
         <View style={styles.iconView}>
-          {selected.includes(value.toString()) ? (
+          {selected.includes(value) ? (
             <MaterialCommunityIcons
               name="check"
               size={18}
