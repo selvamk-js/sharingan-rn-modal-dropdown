@@ -17,7 +17,7 @@ export interface IDefaultValue {
   /**
    * Call back function onSelecting the dropdown value. It will return the selected item value.
    */
-  onChange: (value: string | number) => void;
+  onChange: (value: any) => void;
 }
 
 export interface IDropdownDefault {
@@ -268,7 +268,7 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
   /**
    * Call back function onSelecting the dropdown value. It will return the selected item value.
    */
-  onChange: (value: Array<string | number>) => void;
+  onChange: (value: any[]) => void;
 
   /**
    * Collection of object items to render the dropdown.
