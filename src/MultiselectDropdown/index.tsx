@@ -93,6 +93,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     emptySelectionText,
     paperTheme,
     textInputStyle,
+    chipStyle = {},
   } = props;
   // const [selected, setSelected] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<IDropdownData[]>([]);
@@ -329,10 +330,10 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                   styles.chip,
                   {
                     borderColor: primaryColor,
-                    maxWidth: !enableAvatar ? 150 : 'auto',
                     backgroundColor:
                       chipType === 'flat' ? primaryColor : 'transparent',
                   },
+                  chipStyle,
                 ]}
                 ellipsizeMode="tail"
                 onClose={() => removeChip(item.value)}
@@ -405,12 +406,12 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                           styles.chip,
                           {
                             borderColor: primaryColor,
-                            maxWidth: !enableAvatar ? 150 : 'auto',
                             backgroundColor:
                               chipType === 'flat'
                                 ? primaryColor
                                 : 'transparent',
                           },
+                          chipStyle,
                         ]}
                         ellipsizeMode="tail"
                         avatar={

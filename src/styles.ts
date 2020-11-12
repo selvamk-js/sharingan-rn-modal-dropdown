@@ -95,7 +95,6 @@ export default StyleSheet.create({
   },
   chip: {
     height: 35,
-
     borderWidth: 1,
   },
   modalCloseIcon: {
@@ -105,7 +104,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   chipScrollView: {
-    padding: 5,
+    padding: 8,
   },
   chipWrapper: { paddingLeft: 2 },
   centerChips: {

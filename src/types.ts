@@ -321,6 +321,11 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
    * ### Default: Selected items will appear here...
    */
   emptySelectionText?: string;
+
+  /**
+   * Change the chip view style
+   */
+  chipStyle?: StyleProp<ViewStyle>;
 }
 
 export interface IDropdownItemProps {
