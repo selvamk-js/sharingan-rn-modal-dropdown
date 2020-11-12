@@ -218,7 +218,7 @@
 export const data = [
   {
     value: 1,
-    label: 'Tiger Nixon',
+    label: 'Tiger Nixon Test Data',
     employee_salary: '320800',
     employee_age: '61',
     avatarSource: require('./ddicon.png'),

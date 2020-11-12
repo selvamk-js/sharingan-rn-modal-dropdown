@@ -100,6 +100,7 @@ const FormikExample = () => {
                   required
                   error={errors.msChipFlat ? true : false}
                   emptySelectionText="No item selected"
+                  chipStyle={{ backgroundColor: 'white' }}
                 />
               </View>
               <View style={styles.container}>
