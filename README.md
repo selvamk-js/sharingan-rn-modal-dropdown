@@ -512,6 +512,10 @@ Mode of the chip.
 
 Change chip label text style.
 
+#### `chipStyle`
+
+Change the chip view style.
+
 #### `emptySelectionText`
 
 Change the selection section empty text value.
