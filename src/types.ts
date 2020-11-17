@@ -136,6 +136,12 @@ export interface IDropdownDefault {
    * Dropdown parent container style.
    */
   parentDDContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Dropdown main container style.
+   */
+  mainContainerStyle?: StyleProp<ViewStyle>;
+
   /**
    * String: Message to be shown when the dropdown is empty.
    * or
