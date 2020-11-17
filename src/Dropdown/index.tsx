@@ -83,6 +83,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     onBlur,
     paperTheme,
     textInputStyle,
+    mainContainerStyle,
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setLabelV] = useState<string>('');
@@ -267,7 +268,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
           rippleColor={rippleColor}
         >
           <View
-            style={styles.fullWidth}
+            style={[styles.fullWidth, mainContainerStyle]}
             ref={pViewRef}
             onLayout={androidOnLayout}
             pointerEvents="none"

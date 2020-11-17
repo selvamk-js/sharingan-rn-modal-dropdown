@@ -94,6 +94,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     paperTheme,
     textInputStyle,
     chipStyle = {},
+    mainContainerStyle,
   } = props;
   // const [selected, setSelected] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<IDropdownData[]>([]);
@@ -284,7 +285,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
           rippleColor={rippleColor}
         >
           <View
-            style={styles.fullWidth}
+            style={[styles.fullWidth, mainContainerStyle]}
             ref={pViewRef}
             onLayout={androidOnLayout}
             pointerEvents="none"

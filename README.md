@@ -359,6 +359,10 @@ Since the dropdown build on top of Native Paper you can over write the theme by 
 
 Dropdown input style.
 
+#### `mainContainerStyle`
+
+Dropdown main container style.
+
 #### Props (Simple Dropdown)
 
 ---

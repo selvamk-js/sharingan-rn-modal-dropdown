@@ -89,6 +89,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     onBlur,
     paperTheme,
     textInputStyle,
+    mainContainerStyle,
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setlabelV] = useState<string>('');
@@ -293,7 +294,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
             rippleColor={rippleColor}
           >
             <View
-              style={styles.fullWidth}
+              style={[styles.fullWidth, mainContainerStyle]}
               ref={pViewRef}
               onLayout={androidOnLayout}
               pointerEvents="none"
