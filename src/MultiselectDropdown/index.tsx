@@ -95,6 +95,12 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     textInputStyle,
     chipStyle = {},
     mainContainerStyle,
+    underlineColor,
+    disableSelectionTick,
+    selectedItemTextStyle,
+    selectedItemViewStyle,
+    removeLabel,
+    mode = 'flat',
   } = props;
   // const [selected, setSelected] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<IDropdownData[]>([]);
@@ -276,6 +282,14 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     else return <>{emptyListText}</>;
   };
 
+  const labelAction = () => {
+    if (removeLabel) {
+      return '';
+    } else {
+      return required ? `${label}*` : label;
+    }
+  };
+
   return (
     <PaperProvider theme={paperTheme || theme}>
       <View>
@@ -291,9 +305,11 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
             pointerEvents="none"
           >
             <TextInput
-              label={required ? `${label}*` : label}
+              label={labelAction()}
               value={labelv}
               style={[styles.textInput, textInputStyle]}
+              underlineColor={underlineColor}
+              underlineColorAndroid={underlineColor}
               editable={false}
               error={hasError}
               disabled={disabled}
@@ -306,6 +322,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
               right={
                 <TextInput.Icon name="menu-down" size={30} color={iconColor} />
               }
+              mode={mode}
             />
           </View>
           {required && hasError ? (
@@ -476,6 +493,9 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                     disabled={showLoader}
                     enableAvatar={enableAvatar}
                     avatarSize={avatarSize}
+                    disableSelectionTick={disableSelectionTick}
+                    selectedItemTextStyle={selectedItemTextStyle}
+                    selectedItemViewStyle={selectedItemViewStyle}
                   />
                 )}
                 keyExtractor={() => Math.random().toString()}

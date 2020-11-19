@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Lo from 'lodash';
 
 import { colors, ITEMLAYOUT } from '../constants';
 import type { IMultiselectDropdownItemProps } from '../types';
@@ -28,6 +29,9 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
   disabled,
   enableAvatar,
   avatarSize,
+  disableSelectionTick,
+  selectedItemTextStyle,
+  selectedItemViewStyle,
 }) => {
   const { label, value, avatarSource } = item;
   const styles = StyleSheet.create({
@@ -63,6 +67,12 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
     onSelect(value);
   };
 
+  const getSelectedStyles = () => {
+    if (!Lo.isEmpty(selectedItemTextStyle)) {
+      return { ...styles.selected, ...(selectedItemTextStyle as {}) };
+    } else return styles.selected;
+  };
+
   return (
     <PressableTouch
       onPress={handleSelectValue}
@@ -70,7 +80,13 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
       key={Math.random().toString()}
       rippleColor={rippleColor}
     >
-      <View style={[styles.listView, itemContainerStyle]}>
+      <View
+        style={[
+          styles.listView,
+          itemContainerStyle,
+          selected.includes(value) ? selectedItemViewStyle : {},
+        ]}
+      >
         <View style={styles.textView}>
           {enableAvatar && (
             <Avatar.Image
@@ -82,14 +98,16 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
           <Text
             style={[
               itemTextStyle,
-              selected.includes(value) ? styles.selected : styles.unselected,
+              selected.includes(value)
+                ? getSelectedStyles()
+                : styles.unselected,
             ]}
           >
             {label}
           </Text>
         </View>
         <View style={styles.iconView}>
-          {selected.includes(value) ? (
+          {selected.includes(value) && !disableSelectionTick ? (
             <MaterialCommunityIcons
               name="check"
               size={18}

@@ -363,6 +363,45 @@ Dropdown input style.
 
 Dropdown main container style.
 
+#### `underlineColor`
+
+Change TextInput Under Line color.
+
+#### `disableSelectionTick`
+
+Disable the selected item tick mark.
+
+#### `textInputPlaceholder`
+
+Change TextInput Placeholder text.
+
+#### `textInputPlaceholderColor`
+
+Change TextInput Placeholder color.
+
+#### `selectedItemTextStyle`
+
+Change the selected text view style for the dropdown item.
+
+#### `selectedItemViewStyle`
+
+Change the selected item view style for the dropdown item.
+
+#### `removeLabel`
+
+Remove TextInput label.
+`Note`: Empty string must be passed since label is a required field
+
+#### `mode`
+
+Mode of the TextInput.
+
+- `flat` (default) - flat input with an underline.
+- `outlined` - input with an outline.
+  In outlined mode, the background color of the label is derived from colors.background in theme or the backgroundColor style. This component render TextInputOutlined or TextInputFlat based on that props
+
+Remove TextInput label. Note: Empty string must be passed since label is a required field
+
 #### Props (Simple Dropdown)
 
 ---

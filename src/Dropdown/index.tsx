@@ -84,6 +84,14 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     paperTheme,
     textInputStyle,
     mainContainerStyle,
+    underlineColor,
+    disableSelectionTick,
+    textInputPlaceholder,
+    textInputPlaceholderColor,
+    selectedItemTextStyle,
+    selectedItemViewStyle,
+    removeLabel,
+    mode = 'flat',
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setLabelV] = useState<string>('');
@@ -259,6 +267,14 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     else return <>{emptyListText}</>;
   };
 
+  const labelAction = () => {
+    if (removeLabel) {
+      return '';
+    } else {
+      return required ? `${label}*` : label;
+    }
+  };
+
   return (
     <PaperProvider theme={paperTheme || theme}>
       <View>
@@ -274,9 +290,13 @@ const Dropdown: React.FC<IDropdownProps> = props => {
             pointerEvents="none"
           >
             <TextInput
-              label={required ? `${label}*` : label}
+              label={labelAction()}
+              placeholder={textInputPlaceholder}
+              placeholderTextColor={textInputPlaceholderColor}
               value={labelv}
               style={[styles.textInput, textInputStyle]}
+              underlineColor={underlineColor}
+              underlineColorAndroid={underlineColor}
               editable={false}
               error={hasError}
               disabled={disabled}
@@ -287,6 +307,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               right={
                 <TextInput.Icon name="menu-down" size={30} color={iconColor} />
               }
+              mode={mode}
             />
           </View>
           {required && hasError ? (
@@ -377,6 +398,9 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                     disabled={showLoader}
                     enableAvatar={enableAvatar}
                     avatarSize={avatarSize}
+                    disableSelectionTick={disableSelectionTick}
+                    selectedItemTextStyle={selectedItemTextStyle}
+                    selectedItemViewStyle={selectedItemViewStyle}
                   />
                 )}
                 keyExtractor={() => Math.random().toString()}

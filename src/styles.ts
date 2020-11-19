@@ -21,6 +21,7 @@ export default StyleSheet.create({
   },
   textInput: {
     backgroundColor: 'transparent',
+    borderColor: 'black',
   },
   rippleStyle: {
     width: '100%',

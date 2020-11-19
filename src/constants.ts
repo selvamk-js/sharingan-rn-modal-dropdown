@@ -35,4 +35,11 @@ export const defaultDropdownProps = {
   avatarSize: 30,
   emptySelectionText: 'Selected items will appear here...',
   mainContainerStyle: {},
+  underlineColor: undefined,
+  disableSelectionTick: false,
+  textInputPlaceholder: undefined,
+  textInputPlaceholderColor: undefined,
+  selectedItemTextStyle: {},
+  selectedItemViewStyle: {},
+  removeLabel: false,
 };

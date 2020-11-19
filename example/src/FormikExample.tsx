@@ -115,6 +115,9 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('msChipOutlined', value)}
                   required
                   error={errors.msChipOutlined ? true : false}
+                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemTextStyle={{ fontWeight: 'bold' }}
+                  disableSelectionTick
                 />
               </View>
               <View style={styles.container}>
@@ -127,6 +130,8 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('sddWoAvatar', value)}
                   required
                   error={errors.sddWoAvatar ? true : false}
+                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemTextStyle={{ fontWeight: 'bold' }}
                 />
               </View>
               <View style={styles.container}>
@@ -140,6 +145,15 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('sddWAvatar', value)}
                   required
                   error={errors.sddWAvatar ? true : false}
+                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemTextStyle={{ fontWeight: 'bold' }}
+                  disableSelectionTick
+                  removeLabel
+                  textInputPlaceholder="Simple dropdown with avatar"
+                  textInputStyle={{
+                    paddingHorizontal: 0,
+                  }}
+                  underlineColor="transparent"
                 />
               </View>
               <View style={styles.container}>
@@ -155,6 +169,8 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('gddWoAvatar', value)}
                   required
                   error={errors.gddWoAvatar ? true : false}
+                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemTextStyle={{ fontWeight: 'bold' }}
                 />
               </View>
               <View style={styles.container}>
@@ -171,6 +187,8 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('gddWAvatar', value)}
                   required
                   error={errors.gddWAvatar ? true : false}
+                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemTextStyle={{ fontWeight: 'bold' }}
                 />
               </View>
             </ScrollView>
