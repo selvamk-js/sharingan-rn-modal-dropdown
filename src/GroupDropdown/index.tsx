@@ -90,6 +90,12 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     paperTheme,
     textInputStyle,
     mainContainerStyle,
+    underlineColor,
+    disableSelectionTick,
+    selectedItemTextStyle,
+    selectedItemViewStyle,
+    removeLabel,
+    mode = 'flat',
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setlabelV] = useState<string>('');
@@ -284,6 +290,14 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     else return <>{emptyListText}</>;
   };
 
+  const labelAction = () => {
+    if (removeLabel) {
+      return '';
+    } else {
+      return required ? `${label}*` : label;
+    }
+  };
+
   return (
     <PaperProvider theme={paperTheme || theme}>
       <View>
@@ -300,9 +314,11 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
               pointerEvents="none"
             >
               <TextInput
-                label={required ? `${label}*` : label}
+                label={labelAction()}
                 value={labelv}
                 style={[styles.textInput, textInputStyle]}
+                underlineColor={underlineColor}
+                underlineColorAndroid={underlineColor}
                 editable={false}
                 error={hasError}
                 disabled={disabled}
@@ -317,6 +333,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                     color={iconColor}
                   />
                 }
+                mode={mode}
               />
             </View>
             {required && hasError ? (
@@ -408,6 +425,9 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                       disabled={showLoader}
                       enableAvatar={enableAvatar}
                       avatarSize={avatarSize}
+                      disableSelectionTick={disableSelectionTick}
+                      selectedItemTextStyle={selectedItemTextStyle}
+                      selectedItemViewStyle={selectedItemViewStyle}
                     />
                   )}
                   renderSectionHeader={({ section: { title } }) => (

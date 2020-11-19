@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Lo from 'lodash';
 import { colors, ITEMLAYOUT } from '../constants';
 import type { IDropdownItemProps } from '../types';
 import PressableTouch from './PressableTouch';
@@ -28,6 +28,9 @@ const Item: React.FC<IDropdownItemProps> = ({
   disabled,
   enableAvatar,
   avatarSize,
+  disableSelectionTick,
+  selectedItemTextStyle,
+  selectedItemViewStyle,
 }) => {
   const { label, value, avatarSource } = item;
   const styles = StyleSheet.create({
@@ -63,6 +66,12 @@ const Item: React.FC<IDropdownItemProps> = ({
     onSelect(value);
   };
 
+  const getSelectedStyles = () => {
+    if (!Lo.isEmpty(selectedItemTextStyle)) {
+      return { ...styles.selected, ...(selectedItemTextStyle as {}) };
+    } else return styles.selected;
+  };
+
   return (
     <PressableTouch
       onPress={handleSelectValue}
@@ -70,7 +79,13 @@ const Item: React.FC<IDropdownItemProps> = ({
       key={Math.random().toString()}
       rippleColor={rippleColor}
     >
-      <View style={[styles.listView, itemContainerStyle]}>
+      <View
+        style={[
+          styles.listView,
+          itemContainerStyle,
+          selected === value && selectedItemViewStyle,
+        ]}
+      >
         <View style={styles.textView}>
           {enableAvatar && (
             <Avatar.Image
@@ -82,14 +97,14 @@ const Item: React.FC<IDropdownItemProps> = ({
           <Text
             style={[
               itemTextStyle,
-              selected === value ? styles.selected : styles.unselected,
+              selected === value ? getSelectedStyles() : styles.unselected,
             ]}
           >
             {label}
           </Text>
         </View>
         <View style={styles.iconView}>
-          {selected === value ? (
+          {!disableSelectionTick && selected === value ? (
             <MaterialCommunityIcons
               name="check"
               size={18}

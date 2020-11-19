@@ -104,6 +104,7 @@ export interface IDropdownDefault {
    * Change the text view style for the dropdown item.
    */
   itemTextStyle?: StyleProp<TextStyle>;
+
   /**
    * Change the dropdown item container view style.
    */
@@ -169,8 +170,58 @@ export interface IDropdownDefault {
 
   /**
    * Dropdown input style.
+   * Pass `fontSize` prop to modify the font size inside `TextInput`.
+   * Pass `height` prop to set `TextInput` height. When `height` is passed,
+   * `dense` prop will affect only input's `paddingVertical`.
+   * Pass `paddingHorizontal` to modify horizontal padding.
+   * This can be used to get MD Guidelines v1 TextInput look.
    */
   textInputStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Change TextInput Under Line color.
+   */
+  underlineColor?: string;
+
+  /**
+   * Disable the selected item tick mark.
+   */
+  disableSelectionTick?: boolean;
+
+  /**
+   * Change TextInput Placeholder text.
+   */
+  textInputPlaceholder?: string;
+
+  /**
+   * Change TextInput Placeholder color.
+   */
+  textInputPlaceholderColor?: string;
+
+  /**
+   * Change the selected text view style for the dropdown item.
+   */
+  selectedItemTextStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Change the selected item view style for the dropdown item.
+   */
+  selectedItemViewStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Remove TextInput label. Note: Empty string must be passed since label is a required field
+   */
+  removeLabel?: boolean;
+
+  /**
+   * Mode of the TextInput.
+   * - `flat` - flat input with an underline.
+   * - `outlined` - input with an outline.
+   *
+   * In `outlined` mode, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
+   * This component render TextInputOutlined or TextInputFlat based on that props
+   */
+  mode?: 'flat' | 'outlined';
 }
 
 export interface IDropdownData {
@@ -345,6 +396,9 @@ export interface IDropdownItemProps {
   rippleColor?: string;
   enableAvatar?: boolean;
   avatarSize?: number;
+  disableSelectionTick?: boolean;
+  selectedItemTextStyle?: StyleProp<TextStyle>;
+  selectedItemViewStyle?: StyleProp<ViewStyle>;
 }
 
 export interface IMultiselectDropdownItemProps {
@@ -358,4 +412,7 @@ export interface IMultiselectDropdownItemProps {
   rippleColor?: string;
   enableAvatar?: boolean;
   avatarSize?: number;
+  disableSelectionTick?: boolean;
+  selectedItemTextStyle?: StyleProp<TextStyle>;
+  selectedItemViewStyle?: StyleProp<ViewStyle>;
 }
