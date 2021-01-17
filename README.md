@@ -1,4 +1,4 @@
-# sharingan-rn-modal-dropdown
+# sharingan-rn-modal-dropdown (a extension component for [react-native-paper](https://callstack.github.io/react-native-paper/))
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
