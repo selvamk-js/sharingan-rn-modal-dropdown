@@ -88,14 +88,14 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
         ]}
       >
         <View style={styles.textView}>
-          {enableAvatar && (
-            avatarComponent ?
-              (avatarComponent) :
-              (<Avatar.Image
-                size={avatarSize}
-                style={styles.avatarView}
-                source={avatarSource || defaultAvatar}
-              />)
+          {enableAvatar && avatarComponent ? (
+            avatarComponent
+          ) : (
+            <Avatar.Image
+              size={avatarSize}
+              style={styles.avatarView}
+              source={avatarSource || defaultAvatar}
+            />
           )}
           <Text
             style={[
