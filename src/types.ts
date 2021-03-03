@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, FC } from 'react';
 import type {
   ImageSourcePropType,
   StyleProp,
@@ -228,12 +228,14 @@ export interface IDropdownData {
   label: string;
   value: string | number;
   avatarSource?: ImageSourcePropType;
+  avatarComponent?: FC;
 }
 
 export interface IGroupDropdownData {
   title: string;
   data: IDropdownData[];
   avatarSource?: ImageSourcePropType;
+  avatarComponent?: FC;
 }
 
 export interface IGroupDropdownProps extends IDropdownDefault, IDefaultValue {

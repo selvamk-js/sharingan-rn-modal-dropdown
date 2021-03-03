@@ -33,7 +33,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
   selectedItemTextStyle,
   selectedItemViewStyle,
 }) => {
-  const { label, value, avatarSource } = item;
+  const { label, value, avatarSource, avatarComponent } = item;
   const styles = StyleSheet.create({
     unselected: {
       color: colors.unselected,
@@ -89,8 +89,8 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
       >
         <View style={styles.textView}>
           {enableAvatar && (
-            avatarSource && avatarSource.type && avatarSource.type !== Avatar.Image ?
-              (avatarSource) :
+            avatarComponent ?
+              (avatarComponent) :
               (<Avatar.Image
                 size={avatarSize}
                 style={styles.avatarView}

@@ -32,7 +32,7 @@ const Item: React.FC<IDropdownItemProps> = ({
   selectedItemTextStyle,
   selectedItemViewStyle,
 }) => {
-  const { label, value, avatarSource } = item;
+  const { label, value, avatarSource, avatarComponent } = item;
   const styles = StyleSheet.create({
     unselected: {
       color: colors.unselected,
@@ -88,8 +88,8 @@ const Item: React.FC<IDropdownItemProps> = ({
       >
         <View style={styles.textView}>
           {enableAvatar && (
-            avatarSource && avatarSource.type && avatarSource.type !== Avatar.Image ?
-              (avatarSource) :
+            avatarComponent ?
+              (avatarComponent) :
               (<Avatar.Image
                 size={avatarSize}
                 style={styles.avatarView}
