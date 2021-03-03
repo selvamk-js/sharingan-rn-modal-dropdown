@@ -358,11 +358,13 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                 avatar={
                   enableAvatar && (
                     <View style={styles.textView}>
-                      <Avatar.Image
-                        size={avatarSize}
-                        style={styles.avatarView}
-                        source={item.avatarSource || defaultAvatar}
-                      />
+                      {item.avatarSource && item.avatarSource.type !== Avatar.Image ?
+                        (item.avatarSource) :
+                        (<Avatar.Image
+                          size={avatarSize}
+                          style={styles.avatarView}
+                          source={item.avatarSource || defaultAvatar}
+                        />)}
                     </View>
                   )
                 }
@@ -435,11 +437,13 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                         avatar={
                           enableAvatar && (
                             <View style={styles.textView}>
-                              <Avatar.Image
-                                size={avatarSize}
-                                style={styles.avatarView}
-                                source={item.avatarSource || defaultAvatar}
-                              />
+                              {item.avatarSource && item.avatarSource.type !== Avatar.Image ?
+                                (item.avatarSource) :
+                                (<Avatar.Image
+                                  size={avatarSize}
+                                  style={styles.avatarView}
+                                  source={item.avatarSource || defaultAvatar}
+                                />)}
                             </View>
                           )
                         }
