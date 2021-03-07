@@ -351,6 +351,17 @@ Enable or disable avatar for the dropdown items.
 
 Set the avatar view size.
 
+#### avatarComponent
+
+Set a custom avatar for your dropdown items
+```jsx
+ {
+    value: '2',
+    label: 'Garrett Winters',
+    avatarComponent: <Avatar.Icon size={24} icon="folder" />
+  }
+```
+
 #### `paperTheme`
 
 Since the dropdown build on top of Native Paper you can over write the theme by passing your own native paper theme, for more info refer <https://callstack.github.io/react-native-paper/theming.html>

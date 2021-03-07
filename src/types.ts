@@ -228,12 +228,14 @@ export interface IDropdownData {
   label: string;
   value: string | number;
   avatarSource?: ImageSourcePropType;
+  avatarComponent?: ReactNode;
 }
 
 export interface IGroupDropdownData {
   title: string;
   data: IDropdownData[];
   avatarSource?: ImageSourcePropType;
+  avatarComponent?: ReactNode;
 }
 
 export interface IGroupDropdownProps extends IDropdownDefault, IDefaultValue {
