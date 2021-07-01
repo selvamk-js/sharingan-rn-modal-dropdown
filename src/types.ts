@@ -385,6 +385,12 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
    * Change the chip view style
    */
   chipStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Change the label for the selected items
+   * ### Default: (count) selected
+   */
+  selectedItemsText?: string;
 }
 
 export interface IDropdownItemProps {
