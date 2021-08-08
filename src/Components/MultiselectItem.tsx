@@ -15,6 +15,39 @@ const defaultProps = {
   rippleColor: 'rgba(0,0,0,0.1)',
   enableAvatar: false,
 };
+const styles = StyleSheet.create({
+  unselected: {
+    color: colors.unselected,
+    paddingLeft: 5,
+  },
+  selected: {
+    paddingLeft: 5,
+  },
+  listView: {
+    flex: 1,
+    paddingVertical: 10,
+    height: ITEMLAYOUT,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  iconView: {
+    width: 30,
+  },
+  textView: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  avatarView: {
+    backgroundColor: 'transparent',
+  },
+  disabledText: {
+    color: 'grey',
+  },
+  disabledItemView: {
+    backgroundColor: 'transparent',
+  },
+});
 
 const defaultAvatar = require('../assets/ddicon.png');
 
@@ -32,36 +65,12 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
   disableSelectionTick,
   selectedItemTextStyle,
   selectedItemViewStyle,
+  disabledItemViewStyle = styles.disabledItemView,
+  disabledItemTextStyle = styles.disabledText,
+  itemSelectIcon = 'check',
+  itemSelectIconSize = 18,
 }) => {
   const { label, value, avatarSource, avatarComponent } = item;
-  const styles = StyleSheet.create({
-    unselected: {
-      color: colors.unselected,
-      paddingLeft: 5,
-    },
-    selected: {
-      color: selectedColor,
-      paddingLeft: 5,
-    },
-    listView: {
-      flex: 1,
-      paddingVertical: 10,
-      height: ITEMLAYOUT,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    iconView: {
-      width: 30,
-    },
-    textView: {
-      alignItems: 'center',
-      flexDirection: 'row',
-    },
-    avatarView: {
-      backgroundColor: 'transparent',
-    },
-  });
 
   const handleSelectValue = () => {
     onSelect(value);
@@ -69,8 +78,25 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
 
   const getSelectedStyles = () => {
     if (!Lo.isEmpty(selectedItemTextStyle)) {
-      return { ...styles.selected, ...(selectedItemTextStyle as {}) };
+      return {
+        ...styles.selected,
+        color: selectedColor,
+        ...(selectedItemTextStyle as {}),
+      };
     } else return styles.selected;
+  };
+
+  const renderIcon = () => {
+    if (typeof itemSelectIcon === 'string') {
+      return (
+        <MaterialCommunityIcons
+          name={itemSelectIcon}
+          size={itemSelectIconSize}
+          color={selectedColor}
+        />
+      );
+    }
+    return itemSelectIcon;
   };
 
   return (
@@ -85,6 +111,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
           styles.listView,
           itemContainerStyle,
           selected.includes(value) ? selectedItemViewStyle : {},
+          disabled && disabledItemViewStyle,
         ]}
       >
         <View style={styles.textView}>
@@ -105,19 +132,14 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
               selected.includes(value)
                 ? getSelectedStyles()
                 : styles.unselected,
+              disabled && disabledItemTextStyle,
             ]}
           >
             {label}
           </Text>
         </View>
         <View style={styles.iconView}>
-          {selected.includes(value) && !disableSelectionTick ? (
-            <MaterialCommunityIcons
-              name="check"
-              size={18}
-              color={selectedColor}
-            />
-          ) : null}
+          {selected.includes(value) && !disableSelectionTick && renderIcon()}
         </View>
       </View>
     </PressableTouch>

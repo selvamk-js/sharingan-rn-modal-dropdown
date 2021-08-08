@@ -102,8 +102,14 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     removeLabel,
     mode = 'flat',
     selectedItemsText,
+    disabledItemTextStyle,
+    disabledItemViewStyle,
+    hideChip = false,
+    dropdownIcon = 'menu-down',
+    dropdownIconSize = 30,
+    itemSelectIcon,
+    itemSelectIconSize,
   } = props;
-  // const [selected, setSelected] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<IDropdownData[]>([]);
   const [labelv, setLabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -321,7 +327,11 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                 },
               }}
               right={
-                <TextInput.Icon name="menu-down" size={30} color={iconColor} />
+                <TextInput.Icon
+                  name={dropdownIcon}
+                  size={dropdownIconSize}
+                  color={iconColor}
+                />
               }
               mode={mode}
             />
@@ -336,47 +346,49 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
             </HelperText>
           ) : null}
         </PressableTouch>
-        <FlatList
-          data={selectedItems}
-          style={styles.chipScrollView}
-          horizontal
-          keyExtractor={() => Math.random().toString()}
-          renderItem={({ item }) => (
-            <View style={styles.chipWrapper}>
-              <Chip
-                mode={chipType}
-                style={[
-                  styles.chip,
-                  {
-                    borderColor: primaryColor,
-                    backgroundColor:
-                      chipType === 'flat' ? primaryColor : 'transparent',
-                  },
-                  chipStyle,
-                ]}
-                ellipsizeMode="tail"
-                onClose={() => removeChip(item.value)}
-                avatar={
-                  enableAvatar && (
-                    <View style={styles.textView}>
-                      {item.avatarComponent ? (
-                        item.avatarComponent
-                      ) : (
-                        <Avatar.Image
-                          size={avatarSize}
-                          style={styles.avatarView}
-                          source={item.avatarSource || defaultAvatar}
-                        />
-                      )}
-                    </View>
-                  )
-                }
-              >
-                <Text style={chipTextStyle}>{item.label}</Text>
-              </Chip>
-            </View>
-          )}
-        />
+        {!hideChip && (
+          <FlatList
+            data={selectedItems}
+            style={styles.chipScrollView}
+            horizontal
+            keyExtractor={() => Math.random().toString()}
+            renderItem={({ item }) => (
+              <View style={styles.chipWrapper}>
+                <Chip
+                  mode={chipType}
+                  style={[
+                    styles.chip,
+                    {
+                      borderColor: primaryColor,
+                      backgroundColor:
+                        chipType === 'flat' ? primaryColor : 'transparent',
+                    },
+                    chipStyle,
+                  ]}
+                  ellipsizeMode="tail"
+                  onClose={() => removeChip(item.value)}
+                  avatar={
+                    enableAvatar && (
+                      <View style={styles.textView}>
+                        {item.avatarComponent ? (
+                          item.avatarComponent
+                        ) : (
+                          <Avatar.Image
+                            size={avatarSize}
+                            style={styles.avatarView}
+                            source={item.avatarSource || defaultAvatar}
+                          />
+                        )}
+                      </View>
+                    )
+                  }
+                >
+                  <Text style={chipTextStyle}>{item.label}</Text>
+                </Chip>
+              </View>
+            )}
+          />
+        )}
         <Modal
           isVisible={isVisible}
           onBackdropPress={onModalBlur}
@@ -416,50 +428,52 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                 </View>
               ) : null}
               <View>
-                <FlatList
-                  data={selectedItems}
-                  style={styles.chipScrollView}
-                  horizontal
-                  keyExtractor={() => Math.random().toString()}
-                  renderItem={({ item }) => (
-                    <View style={styles.chipWrapper}>
-                      <Chip
-                        mode={chipType}
-                        style={[
-                          styles.chip,
-                          {
-                            borderColor: primaryColor,
-                            backgroundColor:
-                              chipType === 'flat'
-                                ? primaryColor
-                                : 'transparent',
-                          },
-                          chipStyle,
-                        ]}
-                        ellipsizeMode="tail"
-                        avatar={
-                          enableAvatar && (
-                            <View style={styles.textView}>
-                              {item.avatarComponent ? (
-                                item.avatarComponent
-                              ) : (
-                                <Avatar.Image
-                                  size={avatarSize}
-                                  style={styles.avatarView}
-                                  source={item.avatarSource || defaultAvatar}
-                                />
-                              )}
-                            </View>
-                          )
-                        }
-                        onClose={() => removeChip(item.value)}
-                      >
-                        <Text style={chipTextStyle}>{item.label}</Text>
-                      </Chip>
-                    </View>
-                  )}
-                  ListEmptyComponent={<Caption>{emptySelectionText}</Caption>}
-                />
+                {!hideChip && (
+                  <FlatList
+                    data={selectedItems}
+                    style={styles.chipScrollView}
+                    horizontal
+                    keyExtractor={() => Math.random().toString()}
+                    renderItem={({ item }) => (
+                      <View style={styles.chipWrapper}>
+                        <Chip
+                          mode={chipType}
+                          style={[
+                            styles.chip,
+                            {
+                              borderColor: primaryColor,
+                              backgroundColor:
+                                chipType === 'flat'
+                                  ? primaryColor
+                                  : 'transparent',
+                            },
+                            chipStyle,
+                          ]}
+                          ellipsizeMode="tail"
+                          avatar={
+                            enableAvatar && (
+                              <View style={styles.textView}>
+                                {item.avatarComponent ? (
+                                  item.avatarComponent
+                                ) : (
+                                  <Avatar.Image
+                                    size={avatarSize}
+                                    style={styles.avatarView}
+                                    source={item.avatarSource || defaultAvatar}
+                                  />
+                                )}
+                              </View>
+                            )
+                          }
+                          onClose={() => removeChip(item.value)}
+                        >
+                          <Text style={chipTextStyle}>{item.label}</Text>
+                        </Chip>
+                      </View>
+                    )}
+                    ListEmptyComponent={<Caption>{emptySelectionText}</Caption>}
+                  />
+                )}
               </View>
               <Divider style={styles.divider} />
               <FlatList
@@ -499,12 +513,16 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                     itemTextStyle={itemTextStyle}
                     itemContainerStyle={itemContainerStyle}
                     rippleColor={rippleColor}
-                    disabled={showLoader}
+                    disabled={showLoader || item?.disabled}
                     enableAvatar={enableAvatar}
                     avatarSize={avatarSize}
                     disableSelectionTick={disableSelectionTick}
                     selectedItemTextStyle={selectedItemTextStyle}
                     selectedItemViewStyle={selectedItemViewStyle}
+                    disabledItemTextStyle={disabledItemTextStyle}
+                    disabledItemViewStyle={disabledItemViewStyle}
+                    itemSelectIcon={itemSelectIcon}
+                    itemSelectIconSize={itemSelectIconSize}
                   />
                 )}
                 keyExtractor={() => Math.random().toString()}

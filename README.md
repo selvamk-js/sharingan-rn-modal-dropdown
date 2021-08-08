@@ -1,5 +1,7 @@
 # sharingan-rn-modal-dropdown (An extension component for the [react-native-paper](https://callstack.github.io/react-native-paper/))
 
+## Pull requests are always welcome
+
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
@@ -51,6 +53,7 @@ export const data = [
     employee_salary: '320800',
     employee_age: '61',
     avatarSource: require('./ddicon.png'),
+    disabled: true, // disable the item
   },
   {
     value: '2',
@@ -245,6 +248,24 @@ export default Example;
 
 The package exports a `Dropdown`, `GroupDropdown`, and `MultiselectDropdown,` components which is the one you'd use to render the dropdowns.
 
+---
+
+### Dropdown Items structure
+
+Dropdown data expect an array of items that are needed to be rendered.
+
+#### IDropdownData Type Ref
+
+```js
+export interface IDropdownData {
+  label: string;
+  value: string | number;
+  avatarSource?: ImageSourcePropType;
+  avatarComponent?: ReactNode;
+  disabled?: boolean;
+}
+```
+
 ### Props (common)
 
 ---
@@ -354,6 +375,7 @@ Set the avatar view size.
 #### avatarComponent
 
 Set a custom avatar for your dropdown items
+
 ```jsx
  {
     value: '2',
@@ -398,6 +420,14 @@ Change the selected text view style for the dropdown item.
 
 Change the selected item view style for the dropdown item.
 
+#### `disabledItemTextStyle`
+
+Change the disabled text view style for the dropdown item.
+
+#### `disabledItemViewStyle`
+
+Change the disabled item view style for the dropdown item.
+
 #### `removeLabel`
 
 Remove TextInput label.
@@ -412,6 +442,22 @@ Mode of the TextInput.
   In outlined mode, the background color of the label is derived from colors.background in theme or the backgroundColor style. This component render TextInputOutlined or TextInputFlat based on that props
 
 Remove TextInput label. Note: Empty string must be passed since label is a required field
+
+#### `dropdownIcon`
+
+Material community icon string to change the dropdown down arrow refer: <https://materialdesignicons.com/>
+
+#### `dropdownIconSize`
+
+Change the dropdown icon size default: 30
+
+#### `itemSelectIcon`
+
+Material community icon string to change the dropdown item select check icon refer: <https://materialdesignicons.com/>
+
+#### `itemSelectIconSize`
+
+Change the dropdown item icon size default: 18
 
 #### Props (Simple Dropdown)
 
@@ -431,6 +477,7 @@ const data = [
     value: '1',
     label: 'Tiger Nixon',
     avatarSource: require('./ddicon.png'),
+    disabled: true,
   },
   {
     value: '2',
@@ -439,6 +486,7 @@ const data = [
       uri:
         'https://img.icons8.com/color/344/circled-user-female-skin-type-6.png',
     },
+    disabled: false,
   },
 ];
 ```

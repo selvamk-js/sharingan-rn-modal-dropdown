@@ -92,6 +92,12 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     selectedItemViewStyle,
     removeLabel,
     mode = 'flat',
+    disabledItemTextStyle,
+    disabledItemViewStyle,
+    dropdownIcon = 'menu-down',
+    dropdownIconSize = 30,
+    itemSelectIcon,
+    itemSelectIconSize,
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setLabelV] = useState<string>('');
@@ -305,7 +311,11 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                 dark: false,
               }}
               right={
-                <TextInput.Icon name="menu-down" size={30} color={iconColor} />
+                <TextInput.Icon
+                  name={dropdownIcon}
+                  size={dropdownIconSize}
+                  color={iconColor}
+                />
               }
               mode={mode}
             />
@@ -395,12 +405,16 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                     itemTextStyle={itemTextStyle}
                     itemContainerStyle={itemContainerStyle}
                     rippleColor={rippleColor}
-                    disabled={showLoader}
+                    disabled={showLoader || item?.disabled}
                     enableAvatar={enableAvatar}
                     avatarSize={avatarSize}
                     disableSelectionTick={disableSelectionTick}
                     selectedItemTextStyle={selectedItemTextStyle}
                     selectedItemViewStyle={selectedItemViewStyle}
+                    disabledItemTextStyle={disabledItemTextStyle}
+                    disabledItemViewStyle={disabledItemViewStyle}
+                    itemSelectIcon={itemSelectIcon}
+                    itemSelectIconSize={itemSelectIconSize}
                   />
                 )}
                 keyExtractor={() => Math.random().toString()}

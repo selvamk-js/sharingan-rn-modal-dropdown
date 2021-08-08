@@ -96,6 +96,12 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     selectedItemViewStyle,
     removeLabel,
     mode = 'flat',
+    disabledItemTextStyle,
+    disabledItemViewStyle,
+    dropdownIcon = 'menu-down',
+    dropdownIconSize = 30,
+    itemSelectIcon,
+    itemSelectIconSize,
   } = props;
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setlabelV] = useState<string>('');
@@ -328,8 +334,8 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                 }}
                 right={
                   <TextInput.Icon
-                    name="menu-down"
-                    size={30}
+                    name={dropdownIcon}
+                    size={dropdownIconSize}
                     color={iconColor}
                   />
                 }
@@ -422,12 +428,16 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                       itemTextStyle={itemTextStyle}
                       itemContainerStyle={itemContainerStyle}
                       rippleColor={rippleColor}
-                      disabled={showLoader}
+                      disabled={showLoader || item?.disabled}
                       enableAvatar={enableAvatar}
                       avatarSize={avatarSize}
                       disableSelectionTick={disableSelectionTick}
                       selectedItemTextStyle={selectedItemTextStyle}
                       selectedItemViewStyle={selectedItemViewStyle}
+                      disabledItemTextStyle={disabledItemTextStyle}
+                      disabledItemViewStyle={disabledItemViewStyle}
+                      itemSelectIcon={itemSelectIcon}
+                      itemSelectIconSize={itemSelectIconSize}
                     />
                   )}
                   renderSectionHeader={({ section: { title } }) => (

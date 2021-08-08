@@ -15,6 +15,8 @@ import {
   Paragraph,
   Portal,
 } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import { DropdownValidation } from './validation';
 
 type tState = {
@@ -101,13 +103,21 @@ const FormikExample = () => {
                   error={errors.msChipFlat ? true : false}
                   emptySelectionText="No item selected"
                   chipStyle={{ backgroundColor: 'white' }}
+                  hideChip={true}
+                  itemSelectIcon={
+                    <Icon
+                      name="chess-knight"
+                      size={18}
+                      color={Colors.amber700}
+                    />
+                  }
                 />
               </View>
               <View style={styles.container}>
                 <MultiselectDropdown
                   label="Multi select with avatar chip outlined"
                   data={data}
-                  primaryColor={Colors.amberA700}
+                  primaryColor={Colors.tealA700}
                   enableSearch
                   enableAvatar
                   chipType="outlined"
@@ -117,7 +127,7 @@ const FormikExample = () => {
                   error={errors.msChipOutlined ? true : false}
                   selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
-                  disableSelectionTick
+                  selectedItemsText="Select"
                 />
               </View>
               <View style={styles.container}>
@@ -132,6 +142,13 @@ const FormikExample = () => {
                   error={errors.sddWoAvatar ? true : false}
                   selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
+                  itemSelectIcon={
+                    <Icon
+                      name="check-double"
+                      size={18}
+                      color={Colors.indigoA700}
+                    />
+                  }
                 />
               </View>
               <View style={styles.container}>
