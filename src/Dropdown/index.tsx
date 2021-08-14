@@ -6,7 +6,7 @@ import {
   HelperText,
   Searchbar,
   Provider as PaperProvider,
-  DefaultTheme,
+  useTheme,
 } from 'react-native-paper';
 import {
   View,
@@ -26,27 +26,6 @@ import { deviceWidth, deviceHeight } from '../util';
 import EmptyList from '../Components/EmptyList';
 import PressableTouch from '../Components/PressableTouch';
 
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    colors: {
-      primary: '#6200ee',
-      accent: '#03dac4',
-      background: '#f6f6f6',
-      surface: '#FFFFFF',
-      error: '#B00020',
-      text: '#000000',
-      onBackground: '#000000',
-      onSurface: '#000000',
-      placeholder: 'rgba(0,0,0,0.54)',
-      disabled: 'rgba(0,0,0,0.26)',
-    },
-  },
-  dark: true,
-};
-
 const Dropdown: React.FC<IDropdownProps> = props => {
   const {
     error,
@@ -63,7 +42,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     borderRadius,
     activityIndicatorColor,
     searchPlaceholder,
-    rippleColor,
+    rippleColor = 'transparent',
     helperText,
     errorColor,
     itemTextStyle,
@@ -92,7 +71,16 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     selectedItemViewStyle,
     removeLabel,
     mode = 'flat',
+    disabledItemTextStyle,
+    disabledItemViewStyle,
+    dropdownIcon = 'menu-down',
+    dropdownIconSize = 30,
+    itemSelectIcon,
+    itemSelectIconSize,
+    multiline = false,
+    searchInputTheme,
   } = props;
+  const { colors } = useTheme();
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setLabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -276,7 +264,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
   };
 
   return (
-    <PaperProvider theme={paperTheme || theme}>
+    <PaperProvider theme={paperTheme}>
       <View>
         <PressableTouch
           onPress={onTextInputFocus}
@@ -300,12 +288,17 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               editable={false}
               error={hasError}
               disabled={disabled}
+              multiline={multiline}
               theme={{
+                ...searchInputTheme,
                 colors: { primary: primaryColor, error: errorColor },
-                dark: false,
               }}
               right={
-                <TextInput.Icon name="menu-down" size={30} color={iconColor} />
+                <TextInput.Icon
+                  name={dropdownIcon}
+                  size={dropdownIconSize}
+                  color={iconColor}
+                />
               }
               mode={mode}
             />
@@ -333,7 +326,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
         >
           <View
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: colors.background,
               width: !floating ? contMeasure.vWidth : 'auto',
               left: !floating ? contMeasure.vx : 0,
               top: !floating ? contMeasure.vy : 100,
@@ -377,7 +370,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                           elevation: 0,
                           backgroundColor: showLoader
                             ? 'transparent'
-                            : '#FFFFFF',
+                            : colors.background,
                           height: ITEMLAYOUT,
                         }}
                       />
@@ -395,12 +388,16 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                     itemTextStyle={itemTextStyle}
                     itemContainerStyle={itemContainerStyle}
                     rippleColor={rippleColor}
-                    disabled={showLoader}
+                    disabled={showLoader || item?.disabled}
                     enableAvatar={enableAvatar}
                     avatarSize={avatarSize}
                     disableSelectionTick={disableSelectionTick}
                     selectedItemTextStyle={selectedItemTextStyle}
                     selectedItemViewStyle={selectedItemViewStyle}
+                    disabledItemTextStyle={disabledItemTextStyle}
+                    disabledItemViewStyle={disabledItemViewStyle}
+                    itemSelectIcon={itemSelectIcon}
+                    itemSelectIconSize={itemSelectIconSize}
                   />
                 )}
                 keyExtractor={() => Math.random().toString()}

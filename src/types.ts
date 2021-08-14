@@ -35,6 +35,7 @@ export interface IDropdownDefault {
    * ### Default: false
    */
   disabled?: boolean;
+
   /**
    * Open the dropdown like the modal.
    * ### Default: false
@@ -82,7 +83,7 @@ export interface IDropdownDefault {
   searchPlaceholder?: string;
   /**
    * Change the ripple color.
-   * ### Default: rgba(0,0,0,0.1)
+   * ### Default: undefined
    */
   rippleColor?: string;
   /**
@@ -164,7 +165,6 @@ export interface IDropdownDefault {
   /**
    * Since the dropdown build on top of Native Paper you can over write the theme
    * by passing your own native paper theme, for more info refer https://callstack.github.io/react-native-paper/theming.html
-   * ### Default: light theme config
    */
   paperTheme?: ReactNativePaper.Theme | undefined;
 
@@ -209,6 +209,16 @@ export interface IDropdownDefault {
   selectedItemViewStyle?: StyleProp<ViewStyle>;
 
   /**
+   * Change the disabled text view style for the dropdown item.
+   */
+  disabledItemTextStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Change the disabled item view style for the dropdown item.
+   */
+  disabledItemViewStyle?: StyleProp<ViewStyle>;
+
+  /**
    * Remove TextInput label. Note: Empty string must be passed since label is a required field
    */
   removeLabel?: boolean;
@@ -222,6 +232,37 @@ export interface IDropdownDefault {
    * This component render TextInputOutlined or TextInputFlat based on that props
    */
   mode?: 'flat' | 'outlined';
+
+  /**
+   * Material community icon string to change the dropdown down arrow
+   */
+  dropdownIcon?: string;
+
+  /**
+   * Change dropdown icon size default: 30
+   */
+  dropdownIconSize?: number;
+
+  /**
+   * Material community icon string to change the dropdown item check string
+   */
+  itemSelectIcon?: string | React.ReactNode;
+
+  /**
+   * Change dropdown icon size default: 18
+   */
+  itemSelectIconSize?: number;
+
+  /**
+   * set multiline option for text input default: false
+   */
+  multiline?: boolean;
+
+  /**
+   * Since the dropdown build on top of Native Paper you can over write the theme
+   * by passing your own native paper input theme, for more info refer https://callstack.github.io/react-native-paper/theming.html
+   */
+  searchInputTheme?: ReactNativePaper.Theme | undefined;
 }
 
 export interface IDropdownData {
@@ -229,6 +270,7 @@ export interface IDropdownData {
   value: string | number;
   avatarSource?: ImageSourcePropType;
   avatarComponent?: ReactNode;
+  disabled?: boolean;
 }
 
 export interface IGroupDropdownData {
@@ -376,6 +418,11 @@ export interface IMultiselectDropdownProps extends IDropdownDefault {
   chipTextStyle?: StyleProp<TextStyle>;
 
   /**
+   * Show/Hide the chip view for multi selected items
+   */
+  hideChip?: boolean;
+
+  /**
    * Change the selection section empty text value
    * ### Default: Selected items will appear here...
    */
@@ -407,6 +454,10 @@ export interface IDropdownItemProps {
   disableSelectionTick?: boolean;
   selectedItemTextStyle?: StyleProp<TextStyle>;
   selectedItemViewStyle?: StyleProp<ViewStyle>;
+  disabledItemTextStyle?: StyleProp<TextStyle>;
+  disabledItemViewStyle?: StyleProp<ViewStyle>;
+  itemSelectIcon?: string | React.ReactNode;
+  itemSelectIconSize?: number;
 }
 
 export interface IMultiselectDropdownItemProps {
@@ -423,4 +474,8 @@ export interface IMultiselectDropdownItemProps {
   disableSelectionTick?: boolean;
   selectedItemTextStyle?: StyleProp<TextStyle>;
   selectedItemViewStyle?: StyleProp<ViewStyle>;
+  disabledItemTextStyle?: StyleProp<TextStyle>;
+  disabledItemViewStyle?: StyleProp<ViewStyle>;
+  itemSelectIcon?: string | React.ReactNode;
+  itemSelectIconSize?: number;
 }

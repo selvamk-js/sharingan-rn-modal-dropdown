@@ -20,7 +20,7 @@ export default StyleSheet.create({
     borderRadius: 0,
   },
   textInput: {
-    backgroundColor: 'transparent',
+    // backgroundColor: 'transparent',
     borderColor: 'black',
   },
   rippleStyle: {
@@ -45,7 +45,6 @@ export default StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   surface: {
-    backgroundColor: 'white',
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 5,
@@ -56,7 +55,6 @@ export default StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.1)',
   },
   multiSelectSurface: {
-    backgroundColor: 'white',
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 5,

@@ -7,7 +7,7 @@ import {
   Searchbar,
   Text,
   Provider as PaperProvider,
-  DefaultTheme,
+  useTheme,
 } from 'react-native-paper';
 import {
   View,
@@ -30,27 +30,6 @@ import type {
 import { deviceWidth, deviceHeight } from '../util';
 import EmptyList from '../Components/EmptyList';
 import PressableTouch from '../Components/PressableTouch';
-
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    colors: {
-      primary: '#6200ee',
-      accent: '#03dac4',
-      background: '#f6f6f6',
-      surface: '#FFFFFF',
-      error: '#B00020',
-      text: '#000000',
-      onBackground: '#000000',
-      onSurface: '#000000',
-      placeholder: 'rgba(0,0,0,0.54)',
-      disabled: 'rgba(0,0,0,0.26)',
-    },
-  },
-  dark: true,
-};
 
 const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
   const {
@@ -96,7 +75,16 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
     selectedItemViewStyle,
     removeLabel,
     mode = 'flat',
+    disabledItemTextStyle,
+    disabledItemViewStyle,
+    dropdownIcon = 'menu-down',
+    dropdownIconSize = 30,
+    itemSelectIcon,
+    itemSelectIconSize,
+    multiline = false,
+    searchInputTheme,
   } = props;
+  const { colors } = useTheme();
   const [selected, setSelected] = useState<string | number>();
   const [labelv, setlabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -299,7 +287,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
   };
 
   return (
-    <PaperProvider theme={paperTheme || theme}>
+    <PaperProvider theme={paperTheme}>
       <View>
         <View>
           <PressableTouch
@@ -322,14 +310,15 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                 editable={false}
                 error={hasError}
                 disabled={disabled}
+                multiline={multiline}
                 theme={{
+                  ...searchInputTheme,
                   colors: { primary: primaryColor, error: errorColor },
-                  dark: false,
                 }}
                 right={
                   <TextInput.Icon
-                    name="menu-down"
-                    size={30}
+                    name={dropdownIcon}
+                    size={dropdownIconSize}
                     color={iconColor}
                   />
                 }
@@ -404,7 +393,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                             elevation: 0,
                             backgroundColor: showLoader
                               ? 'transparent'
-                              : '#FFFFFF',
+                              : colors.background,
                             height: ITEMLAYOUT,
                           }}
                         />
@@ -422,18 +411,25 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                       itemTextStyle={itemTextStyle}
                       itemContainerStyle={itemContainerStyle}
                       rippleColor={rippleColor}
-                      disabled={showLoader}
+                      disabled={showLoader || item?.disabled}
                       enableAvatar={enableAvatar}
                       avatarSize={avatarSize}
                       disableSelectionTick={disableSelectionTick}
                       selectedItemTextStyle={selectedItemTextStyle}
                       selectedItemViewStyle={selectedItemViewStyle}
+                      disabledItemTextStyle={disabledItemTextStyle}
+                      disabledItemViewStyle={disabledItemViewStyle}
+                      itemSelectIcon={itemSelectIcon}
+                      itemSelectIconSize={itemSelectIconSize}
                     />
                   )}
                   renderSectionHeader={({ section: { title } }) => (
                     <View
                       style={{
-                        backgroundColor: showLoader ? 'transparent' : '#FFFFFF',
+                        backgroundColor: showLoader
+                          ? 'transparent'
+                          : colors.background,
+                        borderRadius: 3,
                       }}
                     >
                       <Divider style={styles.divider} />

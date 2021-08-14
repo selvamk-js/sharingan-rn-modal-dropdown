@@ -222,6 +222,7 @@ export const data = [
     employee_salary: '320800',
     employee_age: '61',
     avatarSource: require('./ddicon.png'),
+    disabled: true,
   },
   {
     value: 2,
@@ -258,6 +259,7 @@ export const data = [
     avatarSource: {
       uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
     },
+    disabled: true,
   },
   {
     value: 6,

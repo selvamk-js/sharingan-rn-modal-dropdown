@@ -14,7 +14,10 @@ import {
   FAB,
   Paragraph,
   Portal,
+  useTheme,
 } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import { DropdownValidation } from './validation';
 
 type tState = {
@@ -37,7 +40,7 @@ const FormikExample = () => {
     gddWAvatar: '',
   });
   const hideDialog = () => setVisible(false);
-
+  const { colors } = useTheme();
   return (
     <Formik
       initialValues={{
@@ -47,6 +50,7 @@ const FormikExample = () => {
         sddWAvatar: '',
         gddWoAvatar: '1',
         gddWAvatar: '1',
+        text: '',
       }}
       onSubmit={(values, { setSubmitting }) => {
         setVisible(true);
@@ -75,7 +79,7 @@ const FormikExample = () => {
             </Dialog>
             <FAB
               style={styles.fab}
-              icon="fire"
+              icon="send"
               onPress={handleSubmit}
               disabled={isSubmitting}
               label="Submit"
@@ -85,6 +89,7 @@ const FormikExample = () => {
             style={{
               flexDirection: 'column',
               height: '100%',
+              backgroundColor: colors.background,
             }}
           >
             <ScrollView>
@@ -100,14 +105,21 @@ const FormikExample = () => {
                   required
                   error={errors.msChipFlat ? true : false}
                   emptySelectionText="No item selected"
-                  chipStyle={{ backgroundColor: 'white' }}
+                  itemSelectIcon={
+                    <Icon
+                      name="chess-knight"
+                      size={18}
+                      color={Colors.amber700}
+                    />
+                  }
+                  mode="outlined"
                 />
               </View>
               <View style={styles.container}>
                 <MultiselectDropdown
                   label="Multi select with avatar chip outlined"
                   data={data}
-                  primaryColor={Colors.amberA700}
+                  primaryColor={Colors.tealA700}
                   enableSearch
                   enableAvatar
                   chipType="outlined"
@@ -115,9 +127,8 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('msChipOutlined', value)}
                   required
                   error={errors.msChipOutlined ? true : false}
-                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
-                  disableSelectionTick
+                  selectedItemsText="Select"
                 />
               </View>
               <View style={styles.container}>
@@ -129,9 +140,16 @@ const FormikExample = () => {
                   value={values.sddWoAvatar}
                   onChange={value => setFieldValue('sddWoAvatar', value)}
                   required
+                  mode="outlined"
                   error={errors.sddWoAvatar ? true : false}
-                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
+                  itemSelectIcon={
+                    <Icon
+                      name="check-double"
+                      size={18}
+                      color={Colors.indigoA700}
+                    />
+                  }
                 />
               </View>
               <View style={styles.container}>
@@ -145,14 +163,11 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('sddWAvatar', value)}
                   required
                   error={errors.sddWAvatar ? true : false}
-                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
+                  selectedItemViewStyle={{ backgroundColor: colors.backdrop }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
                   disableSelectionTick
                   removeLabel
                   textInputPlaceholder="Simple dropdown with avatar"
-                  textInputStyle={{
-                    paddingHorizontal: 0,
-                  }}
                   underlineColor="transparent"
                 />
               </View>
@@ -161,7 +176,7 @@ const FormikExample = () => {
                   label="Group dropdown"
                   data={groupData}
                   headerTextStyle={{
-                    color: Colors.teal900,
+                    color: Colors.tealA700,
                   }}
                   primaryColor={Colors.tealA700}
                   enableSearch
@@ -169,7 +184,6 @@ const FormikExample = () => {
                   onChange={value => setFieldValue('gddWoAvatar', value)}
                   required
                   error={errors.gddWoAvatar ? true : false}
-                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
                 />
               </View>
@@ -178,16 +192,15 @@ const FormikExample = () => {
                   label="Group dropdown with avatar"
                   data={groupData}
                   headerTextStyle={{
-                    color: Colors.purple900,
+                    color: Colors.amberA700,
                   }}
-                  primaryColor={Colors.purple500}
+                  primaryColor={Colors.amberA700}
                   enableSearch
                   enableAvatar
                   value={values.gddWAvatar}
                   onChange={value => setFieldValue('gddWAvatar', value)}
                   required
                   error={errors.gddWAvatar ? true : false}
-                  selectedItemViewStyle={{ backgroundColor: '#F7F9F9' }}
                   selectedItemTextStyle={{ fontWeight: 'bold' }}
                 />
               </View>
@@ -225,7 +238,7 @@ const styles = StyleSheet.create({
     margin: 16,
     right: 0,
     bottom: 0,
-    backgroundColor: Colors.indigo500,
+    backgroundColor: Colors.pinkA700,
   },
 });
 
