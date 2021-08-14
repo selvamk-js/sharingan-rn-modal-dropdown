@@ -10,7 +10,7 @@ import {
   Text,
   Avatar,
   Provider as PaperProvider,
-  DefaultTheme,
+  useTheme,
 } from 'react-native-paper';
 import {
   View,
@@ -24,33 +24,37 @@ import Modal from 'react-native-modal';
 import Lo from 'lodash';
 
 import MultiselectItem from '../Components/MultiselectItem';
-import { colors, defaultDropdownProps, ITEMLAYOUT } from '../constants';
+import {
+  colors as ConsColors,
+  defaultDropdownProps,
+  ITEMLAYOUT,
+} from '../constants';
 import type { IDropdownData, IMultiselectDropdownProps } from '../types';
 import styles from '../styles';
 import { deviceWidth, deviceHeight } from '../util';
 import EmptyList from '../Components/EmptyList';
 import PressableTouch from '../Components/PressableTouch';
 
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    colors: {
-      primary: '#6200ee',
-      accent: '#03dac4',
-      background: '#f6f6f6',
-      surface: '#FFFFFF',
-      error: '#B00020',
-      text: '#000000',
-      onBackground: '#000000',
-      onSurface: '#000000',
-      placeholder: 'rgba(0,0,0,0.54)',
-      disabled: 'rgba(0,0,0,0.26)',
-    },
-  },
-  dark: true,
-};
+// const theme = {
+//   ...DefaultTheme,
+//   roundness: 2,
+//   colors: {
+//     ...DefaultTheme.colors,
+//     colors: {
+//       primary: '#6200ee',
+//       accent: '#03dac4',
+//       background: '#f6f6f6',
+//       surface: '#FFFFFF',
+//       error: '#B00020',
+//       text: '#000000',
+//       onBackground: '#000000',
+//       onSurface: '#000000',
+//       placeholder: 'rgba(0,0,0,0.54)',
+//       disabled: 'rgba(0,0,0,0.26)',
+//     },
+//   },
+//   dark: true,
+// };
 
 const defaultAvatar = require('../assets/ddicon.png');
 
@@ -65,7 +69,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     onChange,
     floating,
     enableSearch,
-    primaryColor = colors.primary,
+    primaryColor = ConsColors.primary,
     elevation,
     borderRadius,
     activityIndicatorColor,
@@ -109,7 +113,11 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
     dropdownIconSize = 30,
     itemSelectIcon,
     itemSelectIconSize,
+    multiline = false,
+    searchInputTheme,
   } = props;
+  const { colors } = useTheme();
+
   const [selectedItems, setSelectedItems] = useState<IDropdownData[]>([]);
   const [labelv, setLabelV] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -298,7 +306,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
   };
 
   return (
-    <PaperProvider theme={paperTheme || theme}>
+    <PaperProvider theme={paperTheme}>
       <View>
         <PressableTouch
           onPress={onTextInputFocus}
@@ -320,7 +328,9 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
               editable={false}
               error={hasError}
               disabled={disabled}
+              multiline={multiline}
               theme={{
+                ...searchInputTheme,
                 colors: {
                   primary: primaryColor,
                   error: errorColor,
@@ -402,7 +412,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
         >
           <View
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: colors.background,
               width: !floating ? contMeasure.vWidth : 'auto',
               left: !floating ? contMeasure.vx : 0,
               top: !floating ? contMeasure.vy : 100,
@@ -495,7 +505,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
                           elevation: 0,
                           backgroundColor: showLoader
                             ? 'transparent'
-                            : '#FFFFFF',
+                            : colors.background,
                           height: ITEMLAYOUT,
                         }}
                       />

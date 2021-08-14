@@ -1,6 +1,6 @@
 export const colors = {
   primary: '#2196F3',
-  unselected: '#2e3742',
+  unselected: '#545C66',
   actIndicator: '#2e3742',
   error: 'red',
 };
@@ -29,7 +29,7 @@ export const defaultDropdownProps = {
   stickySectionHeadersEnabled: true,
   parentDDContainerStyle: {},
   itemContainerStyle: {},
-  rippleColor: 'rgba(0,0,0,0.1)',
+  rippleColor: undefined,
   disableSort: false,
   enableAvatar: false,
   avatarSize: 30,

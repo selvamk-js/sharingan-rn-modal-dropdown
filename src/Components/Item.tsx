@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Avatar } from 'react-native-paper';
+import { Avatar, useTheme } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Lo from 'lodash';
-import { colors, ITEMLAYOUT } from '../constants';
+import { colors as ConstColors, ITEMLAYOUT } from '../constants';
 import type { IDropdownItemProps } from '../types';
 import PressableTouch from './PressableTouch';
 
 const defaultProps = {
-  selectedColor: colors.primary,
+  selectedColor: ConstColors.primary,
   itemTextStyle: {},
   itemContainerStyle: {},
   rippleColor: 'rgba(0,0,0,0.1)',
@@ -17,10 +17,6 @@ const defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  unselected: {
-    color: colors.unselected,
-    paddingLeft: 5,
-  },
   selected: {
     paddingLeft: 5,
   },
@@ -72,7 +68,7 @@ const Item: React.FC<IDropdownItemProps> = ({
   itemSelectIconSize = 18,
 }) => {
   const { label, value, avatarSource, avatarComponent } = item;
-
+  const { colors } = useTheme();
   const handleSelectValue = () => {
     onSelect(value);
   };
@@ -99,6 +95,13 @@ const Item: React.FC<IDropdownItemProps> = ({
     }
     return itemSelectIcon;
   };
+
+  const inlineStyle = StyleSheet.create({
+    unselected: {
+      color: colors.text,
+      paddingLeft: 5,
+    },
+  });
 
   return (
     <PressableTouch
@@ -130,7 +133,7 @@ const Item: React.FC<IDropdownItemProps> = ({
           <Text
             style={[
               itemTextStyle,
-              selected === value ? getSelectedStyles() : styles.unselected,
+              selected === value ? getSelectedStyles() : inlineStyle.unselected,
               disabled && disabledItemTextStyle,
             ]}
           >

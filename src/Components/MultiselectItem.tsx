@@ -1,25 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Avatar } from 'react-native-paper';
+import { Avatar, useTheme } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Lo from 'lodash';
 
-import { colors, ITEMLAYOUT } from '../constants';
+import { colors as ConstColors, ITEMLAYOUT } from '../constants';
 import type { IMultiselectDropdownItemProps } from '../types';
 import PressableTouch from './PressableTouch';
 
 const defaultProps = {
-  selectedColor: colors.primary,
+  selectedColor: ConstColors.primary,
   itemTextStyle: {},
   itemContainerStyle: {},
   rippleColor: 'rgba(0,0,0,0.1)',
   enableAvatar: false,
 };
 const styles = StyleSheet.create({
-  unselected: {
-    color: colors.unselected,
-    paddingLeft: 5,
-  },
   selected: {
     paddingLeft: 5,
   },
@@ -42,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   disabledText: {
-    color: 'grey',
+    color: '#CFCFCF',
   },
   disabledItemView: {
     backgroundColor: 'transparent',
@@ -71,6 +67,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
   itemSelectIconSize = 18,
 }) => {
   const { label, value, avatarSource, avatarComponent } = item;
+  const { colors } = useTheme();
 
   const handleSelectValue = () => {
     onSelect(value);
@@ -98,6 +95,13 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
     }
     return itemSelectIcon;
   };
+
+  const inlineStyle = StyleSheet.create({
+    unselected: {
+      color: colors.text,
+      paddingLeft: 5,
+    },
+  });
 
   return (
     <PressableTouch
@@ -131,7 +135,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
               itemTextStyle,
               selected.includes(value)
                 ? getSelectedStyles()
-                : styles.unselected,
+                : inlineStyle.unselected,
               disabled && disabledItemTextStyle,
             ]}
           >

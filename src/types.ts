@@ -83,7 +83,7 @@ export interface IDropdownDefault {
   searchPlaceholder?: string;
   /**
    * Change the ripple color.
-   * ### Default: rgba(0,0,0,0.1)
+   * ### Default: undefined
    */
   rippleColor?: string;
   /**
@@ -165,7 +165,6 @@ export interface IDropdownDefault {
   /**
    * Since the dropdown build on top of Native Paper you can over write the theme
    * by passing your own native paper theme, for more info refer https://callstack.github.io/react-native-paper/theming.html
-   * ### Default: light theme config
    */
   paperTheme?: ReactNativePaper.Theme | undefined;
 
@@ -253,6 +252,17 @@ export interface IDropdownDefault {
    * Change dropdown icon size default: 18
    */
   itemSelectIconSize?: number;
+
+  /**
+   * set multiline option for text input default: false
+   */
+  multiline?: boolean;
+
+  /**
+   * Since the dropdown build on top of Native Paper you can over write the theme
+   * by passing your own native paper input theme, for more info refer https://callstack.github.io/react-native-paper/theming.html
+   */
+  searchInputTheme?: ReactNativePaper.Theme | undefined;
 }
 
 export interface IDropdownData {
