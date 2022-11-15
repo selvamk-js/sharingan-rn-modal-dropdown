@@ -37,6 +37,11 @@ export interface IDropdownDefault {
   disabled?: boolean;
 
   /**
+   * A given color to display the label as.
+   */
+  labelColor?: string;
+
+  /**
    * Open the dropdown like the modal.
    * ### Default: false
    */

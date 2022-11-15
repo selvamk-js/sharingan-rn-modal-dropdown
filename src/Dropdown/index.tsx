@@ -56,6 +56,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     parentDDContainerStyle,
     emptyListText,
     disableSort,
+    labelColor,
     enableAvatar,
     avatarSize,
     defaultSortOrder = 'asc',
@@ -291,7 +292,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               multiline={multiline}
               theme={{
                 ...searchInputTheme,
-                colors: { primary: primaryColor, error: errorColor },
+                colors: { primary: primaryColor, error: errorColor, text: labelColor },
               }}
               right={
                 <TextInput.Icon
