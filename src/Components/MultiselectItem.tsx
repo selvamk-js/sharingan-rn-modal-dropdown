@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Avatar, useTheme } from 'react-native-paper';
+import { Avatar } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Lo from 'lodash';
 
@@ -67,7 +67,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
   itemSelectIconSize = 18,
 }) => {
   const { label, value, avatarSource, avatarComponent } = item;
-  const { colors } = useTheme();
+  // const { colors } = useTheme();
 
   const handleSelectValue = () => {
     onSelect(value);
@@ -98,7 +98,7 @@ const MultiselectItem: React.FC<IMultiselectDropdownItemProps> = ({
 
   const inlineStyle = StyleSheet.create({
     unselected: {
-      color: colors.text,
+      // color: colors.text,
       paddingLeft: 5,
     },
   });

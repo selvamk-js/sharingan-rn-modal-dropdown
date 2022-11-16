@@ -139,15 +139,13 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
   const listRef = useRef<FlatList | any>();
 
   useEffect(() => {
-    Dimensions.addEventListener('change', () => {
+    const changeListen = Dimensions.addEventListener('change', () => {
       setIsVisible(false);
       const { width, height } = Dimensions.get('window');
       setDimension({ dw: width, dh: height });
       setIconColor('grey');
     });
-    return () => {
-      Dimensions.removeEventListener('change', () => {});
-    };
+    return () => changeListen.remove();
   }, []);
 
   useEffect(() => {
@@ -338,7 +336,7 @@ const MultiselectDropdown: React.FC<IMultiselectDropdownProps> = props => {
               }}
               right={
                 <TextInput.Icon
-                  name={dropdownIcon}
+                  icon={dropdownIcon}
                   size={dropdownIconSize}
                   color={iconColor}
                 />

@@ -103,15 +103,13 @@ const Dropdown: React.FC<IDropdownProps> = props => {
   const listRef = useRef<FlatList | any>();
 
   useEffect(() => {
-    Dimensions.addEventListener('change', () => {
+    const changeListen = Dimensions.addEventListener('change', () => {
       setIsVisible(false);
       const { width, height } = Dimensions.get('window');
       setDimension({ dw: width, dh: height });
       setIconColor('grey');
     });
-    return () => {
-      Dimensions.removeEventListener('change', () => {});
-    };
+    return () => changeListen.remove();
   }, []);
 
   useEffect(() => {
@@ -292,11 +290,15 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               multiline={multiline}
               theme={{
                 ...searchInputTheme,
-                colors: { primary: primaryColor, error: errorColor, text: labelColor },
+                colors: {
+                  primary: primaryColor,
+                  error: errorColor,
+                  text: labelColor,
+                },
               }}
               right={
                 <TextInput.Icon
-                  name={dropdownIcon}
+                  icon={dropdownIcon}
                   size={dropdownIconSize}
                   color={iconColor}
                 />

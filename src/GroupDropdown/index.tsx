@@ -109,15 +109,13 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
   const listRef = useRef<SectionList | any>();
 
   useEffect(() => {
-    Dimensions.addEventListener('change', () => {
+    const changeListen = Dimensions.addEventListener('change', () => {
       const { width, height } = Dimensions.get('window');
       setDimension({ dw: width, dh: height });
       setIsVisible(false);
       setIconColor('grey');
     });
-    return () => {
-      Dimensions.removeEventListener('change', () => {});
-    };
+    return () => changeListen.remove();
   }, []);
 
   useEffect(() => {
@@ -317,7 +315,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                 }}
                 right={
                   <TextInput.Icon
-                    name={dropdownIcon}
+                    icon={dropdownIcon}
                     size={dropdownIconSize}
                     color={iconColor}
                   />
